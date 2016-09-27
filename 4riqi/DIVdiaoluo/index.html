@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				top: 10px;
+				background: red;
+				position: absolute;
+				height: 50px;
+				width: 50px;
+			}
+		</style>
+		<script type="text/javascript" src="mTween.js"></script>
+		<script type="text/javascript" src="tween.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		var str = '';
+		var num = 0;
+		var timer,timer1;
+		var onOff = true;
+		//生成dvi
+		for(var i=0;i<15;i++){
+			str += '<div style="left:'+i*60+'px;"></div>'
+		}
+		document.body.innerHTML = str;
+		var div = document.getElementsByTagName('div');
+		
+		for(var i=0;i<15;i++){
+			div[i].index =i;
+			//给每个div加点击事件
+			div[i].onclick = function(){
+				//防止乱点
+				if(!onOff){
+					return;
+				}
+				onOff = false;
+				num = this.index;
+				num1 = this.index;
+				//右边掉落
+					timer = setInterval(function(){
+						mTween(div[num],'top',200,300,'linear');
+						 num++;
+						 if(num>=15){
+						 	clearInterval(timer);
+						 }
+					},100);
+					//左边掉落
+					timer1 = setInterval(function(){
+						mTween(div[num1],'top',200,300,'linear');
+						 num1--;
+						if(num1<0){
+						 	clearInterval(timer1);
+						}
+					},100);
+						
+
+			};
+		}
+		
+				
+		
+		</script>
+	</body>
+</html>

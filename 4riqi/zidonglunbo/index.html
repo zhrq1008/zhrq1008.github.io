@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 600px;
+				height: 600px;
+				border: 5px solid blue;
+				overflow: hidden;
+				margin: 0 auto;
+				position: relative;
+			}
+			#img{
+				width: 1200px;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			img{
+				width: 600px;
+				height: 600px;
+				float: left;
+			}
+			p{
+				margin: 0;
+				width: 600px;
+				height: 80px;
+				position: absolute;
+				left: 0;
+				bottom: -80px;
+				background: red;
+				font-size: 60px;
+				text-align: center;
+				line-height: 80px;
+				
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="img">
+				<img src="img/轮播图/0.jpg"/>
+				<img src="img/轮播图/0.jpg"/>
+			</div>
+			<p>图片1</p>
+		</div>
+	</body>
+	<script src="mTween.js" type="text/javascript" charset="utf-8"></script>
+	<script src="tween.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		var img = document.getElementById('img');
+		var p = document.getElementsByTagName('p')[0];
+		var imgs = document.getElementsByTagName('img');
+		//把图片存为数组。
+		var arr = ['0.jpg','1.jpg','2.jpg','3.jpg','4.jpg']
+		mTween(p,'bottom',0,500,'linear');
+		setInterval(fn,2000);
+		var num = 0;
+		function fn(){
+			num++;
+			if(num>=arr.length){
+				num = 0;
+			}
+			//先改变看不到的那张图片。
+			imgs[1].src = 'img/轮播图/'+arr[num];
+			//向左拉动，并改变前边的图片。
+			mTween(img,'left',-600,800,'linear',function(){
+				
+				imgs[0].src = 'img/轮播图/'+arr[num];
+				img.style.left = '';
+				
+			})
+			//改变描述内容。
+			mTween(p,'bottom',-80,500,'linear',function(){
+				p.innerHTML = '图片'+(num+1);
+				mTween(p,'bottom',0,500,'linear');
+			})
+		}
+	</script>
+</html>

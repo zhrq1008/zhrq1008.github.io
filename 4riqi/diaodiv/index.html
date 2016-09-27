@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	div{
+		width: 50px;
+		height: 50px;
+		background: red;
+		position: absolute;
+		top: 0;
+	}
+	</style>
+	<script type="text/javascript" src="tween.js"></script>
+	<script type="text/javascript" src="mTween.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var len = 12;
+		var str = '';
+
+		for(var i=0;i<len;i++){
+			str+='<div style="left:'+i*60+'px;"></div>';
+		}
+		document.body.innerHTML = str;
+		var divs = document.getElementsByTagName('div');
+		var num = 0;//代表第几个div
+		var n = 0;//用来判断是否所有div都运动结束。
+		var timer = null;//保存定时器
+		var onOff = true;//控制点击
+		var target = 200;//运动目标点
+		document.onclick = function(){
+			if(!onOff){//onOff为false就停止继续运行
+				return;
+			}
+			onOff = false;
+			//console.log(1);
+			//开始定时器每次让一个div向下运动
+			timer = setInterval(function(){
+				mTween(divs[num],'top',target,300,'elasticOut',function(){
+					n++;
+					//n = len的时候说明所有div都运动完了。
+					if(n==len){
+						n = 0;
+						onOff = true;
+						// if(target == 400){
+						// 	target = 0;
+						// }else{
+						// 	target = 400
+						// }
+						target = target == 200?0:200;
+					}
+				})
+				num++;
+				if(num>=len){
+					num = 0;
+					clearInterval(timer);
+				}
+			}, 300)
+			
+			
+		};
+	</script>
+</body>
+</html>

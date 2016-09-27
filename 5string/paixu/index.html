@@ -1,0 +1,123 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	body{
+		background-color: #F1F1F1;
+	}
+	ul{
+		margin:0 auto;
+		padding: 0;
+		width: 1208px;
+	}
+	li{
+		list-style-type: none;
+		float: left;
+		padding: 10px;
+		margin: 0 1px;
+		background-color: white;
+	}
+	p{
+		margin: 0;
+		text-align: center;
+		background-color: #F1F1F1;
+		line-height: 40px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	img{
+		vertical-align: top;
+	}
+	div{
+		margin:0 auto;
+		width: 210px;
+	}
+	div:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	a{
+		text-decoration: none;
+		width: 100px;
+		line-height: 40px;
+		display: block;
+		color: white;
+		background-color: #009999;
+		text-align: center;
+		float: left;
+	}
+	a:nth-child(1){
+		margin-right: 10px;
+	}
+	
+</style>
+</head>
+
+<body>
+	<div>
+		<a href="javascript:;">从小到大</a><a href="javascript:;">打乱顺序</a>
+	</div>
+	<ul>
+		<li><img src="img/1.jpg" alt=""><p>1-温馨办公</p></li>
+		<li><img src="img/2.jpg" alt=""><p>2-游戏桌面</p></li>
+		<li><img src="img/3.jpg" alt=""><p>3-汽车摇滚</p></li>
+		<li><img src="img/4.jpg" alt=""><p>4-狭路相逢</p></li>
+		<li><img src="img/5.jpg" alt=""><p>5-棒球小子</p></li>
+		<li><img src="img/6.jpg" alt=""><p>6-球鞋动力</p></li>
+		<li><img src="img/7.jpg" alt=""><p>7-游戏官网</p></li>
+		<li><img src="img/8.jpg" alt=""><p>8-指尖社区</p></li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript">
+	var ul  = document.getElementsByTagName('ul')[0];
+	var lis = document.getElementsByTagName('li');
+	var btns = document.getElementsByTagName('a');
+	var eles = Array.from(lis);
+	var onOff = true;
+	//从小到大或者从大到小排序。
+	btns[0].onclick = function(){
+		//对元素进行排序
+		eles.sort(function(a,b){
+			//找到需要排序的li下边的p。
+			var text1 = a.getElementsByTagName('p')[0];
+			var text2 = b.getElementsByTagName('p')[0];
+			//根据开关在判断排序方式，从小到大还是从大到小。
+			if(onOff){
+				return text2.innerHTML.charAt() - text1.innerHTML.charAt();
+			}else{
+				return text1.innerHTML.charAt() - text2.innerHTML.charAt();
+			}
+			
+		});
+		//排序完成放回页面。
+		var str = '';
+		for(var i=0;i<eles.length;i++){
+			str += '<li>'+eles[i].innerHTML+'</li>';
+		}
+		ul.innerHTML = str;
+		//切换文字显示状态。
+		if(onOff){
+			this.innerHTML = '从大到小';
+		}else{
+			this.innerHTML = '从小到大';
+		}
+		onOff = !onOff;
+	};
+
+	//随机排序
+	btns[1].onclick = function(){
+		eles.sort(function(){
+			return Math.random() - 0.5;
+		});
+		//排序完成放回页面。
+		var str = '';
+		for(var i=0;i<eles.length;i++){
+			str += '<li>'+eles[i].innerHTML+'</li>';
+		}
+		ul.innerHTML = str;
+	};
+</script>

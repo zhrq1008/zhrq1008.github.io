@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+			font-size: 40px;
+		}
+	</style>
+</head>
+<body>
+	<p><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a></p>
+</body>
+</html>
+<script type="text/javascript">
+	var aA=document.getElementsByTagName('a');
+	var n=-1;
+	for(var i=0;i<aA.length;i++){
+		aA[i].index=i;
+		aA[i].onmouseover=function(){
+			
+
+			fn(this.index);
+		}
+		//移出的时候如果没有点击应该清除。
+		aA[i].onmouseout=function(){
+		
+			fn(n);
+
+		}
+		aA[i].onclick=function(){
+			n=this.index;
+		}
+	}
+	function fn(n){
+		var i,
+			color;
+		for(i=0;i<aA.length;i++){
+			aA[i].style.color='';
+		}
+		//索引小于2就是灰色，否则是黄色。
+		if(n<2){
+			color='green';
+		}else{
+			color='yellow';
+		}
+		//改变颜色。
+		for(i=0;i<=n;i++){
+			aA[i].style.color=color;
+		}
+	}
+</script>

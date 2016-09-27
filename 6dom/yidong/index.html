@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	li{
+		position: relative;
+		top: 0;
+	}
+	</style>
+	<script type="text/javascript" src="js/tween.js"></script>
+	<script type="text/javascript" src="js/mTween.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	var ul = document.createElement('ul');
+	for(var i=0;i<5;i++){
+		(function(){
+			var li = document.createElement('li');
+			var upper = document.createElement('button');
+			var down = document.createElement('button');
+
+			li.innerHTML = (''+i).repeat(10);
+			upper.innerHTML = '上移';
+			down.innerHTML = '下移';
+			//上移
+			upper.onclick = function(){
+				var prev = li.previousElementSibling;
+				//判断是否有上一个兄弟节点。
+				if(prev){
+					//先运动交换位置，运动结束的时候把元素实际的排列位置交换。
+					mTween(li,'top',-li.offsetHeight,400,'linear');
+					mTween(prev,'top',li.offsetHeight,400,'linear',function(){
+						li.style.top = '0px';
+						prev.style.top = '0px';
+						ul.insertBefore(li,prev);
+					});
+					/*li.style.top = -li.offsetHeight+'px';
+					prev.style.top = li.offsetHeight+'px';
+					setTimeout(function(){
+						li.style.top = '0px';
+						prev.style.top = '0px';
+						ul.insertBefore(li,prev);
+					}, 2000)*/
+				}else{
+					alert("已经是第一个了");
+				}
+			};
+			//下移
+			down.onclick = function(){
+				var next = li.nextElementSibling;
+				if(next){
+					mTween(li,'top',li.offsetHeight,400,'linear');
+					mTween(next,'top',-li.offsetHeight,400,'linear',function(){
+						li.style.top = '0px';
+						next.style.top = '0px';
+						ul.insertBefore(next,li);
+					});
+				}else{
+					alert("已经是最后一个了");
+				}
+			};
+
+			//把按钮添加到li；
+			li.appendChild(upper);
+			li.appendChild(down);
+			//把li添加到ul
+			ul.appendChild(li);
+		})();
+	}
+	//把ul添加到页面。
+	document.body.appendChild(ul);
+	
+	</script>
+</body>
+</html>

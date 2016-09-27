@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				border: 2px solid #000;
+				width: 500px;
+				height: 500px;
+				position: relative;
+			}
+			#box div{
+				text-align: center;
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				background-color: red;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btns" value="按钮" />
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			var num = 0;
+			var len = 5;
+			var btns = document.getElementById('btns');
+			var box = document.getElementById('box')
+			var str = '';
+			
+		
+		btns.onclick = function(){
+			str = '';
+			if(num == 0){
+				for(var i=0;i<len;i++){
+				if(i < len/2){
+						str += '<div style="left:'+i*60+'px;top:'+i*60+'px;">'+i+'</div>';
+					}else{
+						str += '<div style="left:'+i*60+'px;top:'+(len-i-1)*60+'px;">'+i+'</div>';
+					}
+					
+				}
+				
+			}
+			
+			if(num ==1){	
+				for(var i=0;i<len;i++){
+					if(i < len/2){
+						str += '<div style="left:'+(len-i-1)*60+'px;top:'+i*60+'px;">'+i+'</div>';
+					}else{
+						str += '<div style="left:'+i*60+'px;top:'+i*60+'px;">'+i+'</div>';
+					}
+				}
+			}
+			
+			
+			if(num == 2){
+				for(var i=0;i<len;i++){
+					if(i < len/2){
+							str += '<div style="left:'+i*60+'px;top:'+i*60+'px;">'+i+'</div>';
+					}else{
+							str += '<div style="left:'+(len-i-1)*60+'px;top:'+i*60+'px;">'+i+'</div>';
+					}
+				}
+			}
+			
+			if(num ==3){	
+				for(var i=0;i<len;i++){
+					if(i < len/2){
+						str += '<div style="left:'+i*60+'px;top:'+(len-i-1)*60+'px;">'+i+'</div>';
+					}else{
+							str += '<div style="left:'+i*60+'px;top:'+i*60+'px;">'+i+'</div>';
+						}
+				}
+			}
+			
+			num++
+			if(num == 4){
+				num = 0;
+			}
+			
+			box.innerHTML = str;
+		}
+		</script>
+	</body>
+</html>

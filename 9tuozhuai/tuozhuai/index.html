@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	div{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		top: 50px;
+	}
+	#div1{
+		background: red;
+	}
+	#border{
+		border: 2px dotted black;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<input type="button" value="恢复" id="reset">
+	<div id="div1"></div>
+	<div id="border"></div>
+	<script type="text/javascript">
+	var div1 = document.getElementById('div1');
+	var border = document.getElementById('border');
+	var reset = document.getElementById('reset');
+	var arr = [];
+	var timer = null;
+	reset.onclick = function(){
+		//数组没有内容就不需要恢复
+		if(arr.length<1)return;
+		clearInterval(timer);
+		timer = setInterval(function(){
+			//obj是arr中最后一个内容。
+			var obj = arr.pop();
+			if(!obj){
+				clearInterval(timer);
+				return;
+			}
+			div1.style.top  = obj.y+'px';
+			div1.style.left = obj.x+'px';
+		}, 30);
+	};
+
+	div1.onmousedown = function(ev){
+		var disx = ev.clientX - this.offsetLeft + 2;
+		var disy = ev.clientY - this.offsetTop + 2;
+		//按下的时候显示border
+		border.style.top = this.offsetTop - 2+'px';
+		border.style.left = this.offsetLeft - 2+'px';
+		border.style.display = 'block';
+		document.onmousemove = function(ev){
+			var x = ev.clientX - disx;
+			var y = ev.clientY - disy;
+			//记录拖拽位置。
+			var obj = {
+				x:x,
+				y:y
+			};
+			arr.push(obj);
+			border.style.top = y+'px';
+			border.style.left = x+'px';
+		};
+		document.onmouseup = function(){
+			document.onmouseup = document.onmousemove = null;
+			//鼠标抬起时把div1移动到border所在位置。并且隐藏border
+			div1.style.top = border.offsetTop + 2+'px';
+			div1.style.left = border.offsetLeft + 2+'px';
+			border.style.display = '';
+		};
+	};
+	</script>
+</body>
+</html>

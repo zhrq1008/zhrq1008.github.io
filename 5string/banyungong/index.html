@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p,ul{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		div{
+			float:left;
+		}
+		#left,#right{
+			width: 300px;
+			height: 150px;
+			padding: 20px;
+			border: 5px solid #940032;
+			border-radius: 15px;
+			position: relative;
+		}
+		#right{
+			border-color: #4169E1;
+		}
+		#left span,#right span{
+			width: 80px;
+			height: 40px;
+			border-radius: 5px;
+			background-color: #4169E1;
+			position: absolute;
+			bottom: 5px;
+			left: 50%;
+			margin-left: -40px; 
+			line-height: 40px;
+			text-align: center;
+			color: white;
+		}
+		#right span{
+			background-color: #940032;
+		}
+		#center{
+			width: 70px;
+			height: 100px;
+			padding: 30px;
+			position: relative;
+		}
+		#center a{
+			width: 70px;
+			height: 20px;
+			background-color: #EF3163;
+			line-height: 20px;
+			text-align: center;
+			display: block;
+			margin-top: 15px;
+			border-radius: 5px;
+			color: white;
+		}
+		#center ul{
+			position: absolute;
+			bottom: 0px;
+		}
+		#center li{
+			width: 10px;
+			height: 10px;
+			background-color: #808080;
+			float: left;
+			margin: 0 3px;
+			border-radius: 50%;
+		}
+	</style>
+	<script type="text/javascript" src="mQuery.js"></script>
+</head>
+<body>
+	<div id="left">
+		<p>拍碎双玉斗，慷慨一何多。满腔都是血泪，无处着悲歌。三百年来王气，满目山河依旧，人事竟如何？百户尚牛酒，四塞已干戈。千金剑，万言策，两蹉跎。醉中呵壁自语，醒后一滂沱。不恨年华去也，只恐少年心事，强半为销磨。愿替众生病，稽首礼维摩。</p>
+		<span></span>
+	</div>
+	<div id="center">
+		<a href="javascript:;" id="toRight">→</a>
+		<a href="javascript:;" id="toLeft">←</a>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div id="right">
+		<p></p>
+		<span></span>
+	</div>
+	<script type="text/javascript">
+		var lis = $('li');
+		var ps = $('p');
+		var span = $('span');
+		var as = $('a');
+		var onOff = true;
+		var num = 0;
+		/*as[0].onclick = function(){
+			var len = ps[0].innerHTML.length;
+				if(len<=0){
+					alert('已经没有文字了')
+					return;
+				}
+				if(!onOff){
+					return;
+				}
+				onOff = false
+			//ps[1].innerHTML => ps[0].innerHTML
+			timer = setInterval(function(){
+				
+				ps[1].innerHTML += ps[0].innerHTML.substring(0,1);
+				ps[0].innerHTML = ps[0].innerHTML.substring(1);
+				span[0].innerHTML = ps[0].innerHTML.length+'/'+len;
+				span[1].innerHTML = ps[1].innerHTML.length+'/'+len;
+				fn();
+				if(ps[0].innerHTML ==''){
+					onOff = true;
+					clearInterval(timer);
+				}
+			},1000)
+		};
+		function fn(){
+			lis[num].style.background = '';
+			num++;
+			num %= lis.length
+			lis[num].style.background = 'red';	
+			
+		}*/
+		as[0].onclick = function(){
+			fn1(ps[0],ps[1],span[0],span[1])
+		}
+		as[1].onclick = function(){
+			fn1(ps[1],ps[0],span[1],span[0])
+		}
+		//obj1是输出的p标签，obj2是接收的p标签，span1是输出的p标签对应的计数，span2是输入的p标签对应的计数
+		function fn1(objc1,objc2,span1,span2){
+			var len = objc1.innerHTML.length;
+					if(len<=0){
+						alert('已经没有文字了')
+						return;
+					}
+					if(!onOff){
+						return;
+					}
+					onOff = false
+				//ps[1].innerHTML => ps[0].innerHTML
+			timer = setInterval(function(){
+					
+					objc2.innerHTML += objc1.innerHTML.substring(0,1);
+					objc1.innerHTML = objc1.innerHTML.substring(1);
+					span1.innerHTML = objc1.innerHTML.length+'/'+len;
+					span2.innerHTML = objc2.innerHTML.length+'/'+len;
+					fn();
+					if(objc1.innerHTML ==''){
+						onOff = true;
+						clearInterval(timer);
+					}
+				},10)
+		
+			
+		}
+		function fn(){
+				lis[num].style.background = '';
+				num++;
+				num %= lis.length
+				lis[num].style.background = 'red';	
+				
+		}
+	</script>
+</body>
+</html>

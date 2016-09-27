@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#div1{
+		position: absolute;
+		border: 1px solid black;
+		display: none;
+	}
+	div:not(#div1){
+		background: red;
+		width: 100px;
+		height: 100px;
+		float: left;
+		margin: 0 5px;
+	}
+	</style>
+</head>
+<body style="height:2000px;">
+	<div><input type="checkbox" name="" id=""></div>
+	<div><input type="checkbox" name="" id=""></div>
+	<div><input type="checkbox" name="" id=""></div>
+	<div><input type="checkbox" name="" id=""></div>
+	<div id="div1"></div>
+	<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+	<script type="text/javascript">
+	var div1 = $('#div1');
+	var divs = $('div:not(#div1)');
+	//console.log(divs)
+	divs.find('input:checkbox').change(function(){
+		var parent = $(this).parent();
+		if(this.checked){
+			parent.css('background','yellow');
+		}else{
+			parent.css('background','');
+		}
+	});
+	divs.mousedown(function(ev) {
+		//使用addEventListEner绑定的事件需要使用ev.stopPropagation()阻止冒泡
+		ev.stopPropagation();
+		//使用addEventListEner绑定的事件需要使用ev.preventDefault()阻止默认行为
+		//ev.preventDefault();
+		//在jq中return false表示阻止默认行为和冒泡；
+		// return false;
+	});
+	//按下计算位置
+	$(document).mousedown(function(ev) {
+		/*console.log(1);*/
+		var disx = ev.clientX;
+		var disy = ev.clientY;
+		//对div1进行定位并显示
+		div1.css({
+			left:disx,
+			top:disy
+		}).show();
+		$(document).mousemove(function(ev) {
+			var width = Math.abs(ev.clientX - disx);
+			var height = Math.abs(ev.clientY - disy);
+			var x = disx - width;
+			var y = disy - height;
+			//如果当前位置小于按下时的位置，则说明需要减少定位值。
+			if(ev.clientX<disx){
+				div1.css('left',x);
+			}
+			if(ev.clientY<disy){
+				div1.css('top',y);
+			}
+			//检测是否框选了文件夹
+			divs.each(function(index,ele){
+				if(CollisionTest(div1[0],ele)){
+					/*$(ele).css('background','yellow').find('input:checkbox').attr('checked',true);*/
+					$(ele).css('background','yellow').find('input:checkbox')[0].checked = true;
+				}else{
+					/*$(ele).css('background','').find('input:checkbox').attr('checked',false);*/
+					$(ele).css('background','').find('input:checkbox')[0].checked = false;
+				}
+			});
+			// 移动的过程中改变div的大小
+			div1.css({
+				width:width,
+				height:height		
+			});
+		});
+		$(document).mouseup(function(ev) {
+			//清空样式并隐藏
+			div1.hide().css({
+				width:0,
+				height:0
+			});
+			$(this).off('mousemove mouseup');
+		});
+	});
+	function CollisionTest(obj1,obj2){
+		var pos1 = getPos(obj1);
+		var pos2 = getPos(obj2);
+		return !(pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom||pos1.right<pos2.left);
+	}
+
+	function getPos(obj){
+		return obj.getBoundingClientRect();
+	}
+	</script>
+</body>
+</html>

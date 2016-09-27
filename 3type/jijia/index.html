@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<ul id="list">
+			<li>
+				<input type="button"  value="+" />
+				<strong>0</strong>
+				<input type="button"  value="-" />
+				单价：<i>12.5</i>  元   小计：
+				<span >0</span>元
+				
+			</li>
+			<li>
+				<input type="button"  value="+" />
+				<strong>10</strong>
+				<input type="button"  value="-" />
+				单价：<i>14.5</i>    小计：
+				<span >0</span>元
+			</li>
+			<li>
+				<input type="button"  value="+" />
+				<strong>0</strong>
+				<input type="button"  value="-" />
+				单价:<i>8</i>    小计：
+				<span >0</span>元
+			</li>
+			<li>
+				<input type="button"  value="+" />
+				<strong>0</strong>
+				<input type="button"  value="-" />
+				单价：<i>8.5</i>元     小计：
+				<span >0</span>元
+			</li>
+		</ul>
+		<div id="box">
+			商品合计共:<em>0</em>件；<br>
+			共花费：<em>0</em>元；<br>
+			其中最贵的商品单价：<em>0</em>元；<br>
+		</div>
+		<script type="text/javascript">
+			var ul = document.getElementById('list');
+			var lis = ul.getElementsByTagName('li');
+			var div = document.getElementsByTagName('div');
+			var ems = div[0].getElementsByTagName('em');
+			var stro = ul.getElementsByTagName('strong');
+			var spann = ul.getElementsByTagName('span');
+			var iss = ul.getElementsByTagName('i');
+			
+			for(var i=0;i<lis.length;i++){
+				fn(i)//实际参数
+			}
+			function fn(n){//形参
+			var btns = lis[n].getElementsByTagName('input');
+			var strongs = lis[n].getElementsByTagName('strong');
+			var is = lis[n].getElementsByTagName('i');
+			var spans = lis[n].getElementsByTagName('span');
+			var num = 0;
+			//给++加点击事件；
+				btns[0].onclick = function(){
+					num++;
+					strongs[0].innerHTML = num;//点击一次加一的数量
+					spans[0].innerHTML = num*(is[0].innerHTML)//计算结果
+					fn1();
+				};
+				//给--加点击事件；
+				btns[1].onclick = function(){
+					num--;
+					if(num<0){
+						num = 0;//判断不能为负数
+					}
+					strongs[0].innerHTML = num;//点击一次减一次
+					spans[0].innerHTML = num*(is[0].innerHTML)//计算结果
+					fn1();
+				};
+			}	
+			function fn1(){
+				var a = 0;//商品合计共多少件
+				var b = 0;//共花费
+				var c = 0;//商品最贵的
+				for(var i=0;i<lis.length;i++){
+					a += Number(stro[i].innerHTML)
+					b += parseFloat(spann[i].innerHTML)
+					//判断件数不能为零，单价值大于自身值；
+					if(stro[i].innerHTML!=0&&parseFloat(iss[i].innerHTML)>c){
+						c = parseFloat(iss[i].innerHTML);//最后为最大值
+					}
+				}
+				ems[0].innerHTML = a;
+				ems[1].innerHTML = b;
+				ems[2].innerHTML = c;
+				
+			}
+		</script>
+	</body>
+</html>

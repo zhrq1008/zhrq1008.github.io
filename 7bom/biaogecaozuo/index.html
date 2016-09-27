@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+    <script>
+
+        //在页面加载完成的时候，把下面这个数据动态添加到表格中
+        var data = [
+            {
+                 'id' : 1,
+                'username' : 'LEO',
+                'age' : 36,
+                'sex' : '男'
+            },
+            {
+                'id' : 2,
+                'username' : 'MOMO',
+                'age' : 26,
+                'sex' : '男'
+            },
+            {
+                'id' : 3,
+                'username' : 'DUODUO',
+                'age' : 27,
+                'sex' : '男'
+            },
+            {
+                'id' : 4,
+                'username' : '勇升',
+                'age' : 26,
+                'sex' : '男'
+            },
+            {
+                'id' : 5,
+                'username' : '小美',
+                'age' : 26,
+                'sex' : '女'
+            }
+        ];
+
+        /*document.ondblclick = function() {
+            alert(1);
+        }*/
+
+        /*
+            1、根据数据生成表格。
+            2、数据的添加
+            3、全选
+            4、上移下移删除
+            5、排序
+            6、反选
+            7、批量删除（被选中的删除）
+        */
+    </script>
+</head>
+
+<body>
+
+<form action="" name="form">
+    <p>
+        姓名:<input type="text" name="username"/>
+    </p>
+    <p>
+        年龄:<input type="text" name="age"/>
+    </p>
+    <p>
+        性别: <select name="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </p>
+    <p>
+        <input type="button" value="添加" name="add"/>
+    </p>
+</form>
+    <input type="button" value="反选" class="btn">
+    <input type="button" value="批量删除"  class="btn"> 
+    <table id="tab1" width="100%" border="1">
+
+        <thead>
+        <tr>
+            <th>
+                <input id="checkAll" type="checkbox" /> 全选
+            </th>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+           <!--  <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>LEO</td>
+                <td>36</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> -->
+        </tbody>
+
+    </table>
+    <script type="text/javascript">
+        var tab=document.getElementById('tab1');
+        var tbody=tab.tBodies[0];
+        var checkAll=document.getElementById('checkAll');
+        var checkbox=tbody.getElementsByTagName('input');
+        var th=tab.tHead.rows[0].cells;
+        var rows=tbody.rows;
+        var btns=document.getElementsByClassName('btn')
+        var inps=form.getElementsByTagName('input');
+        var sel=form.getElementsByTagName('select')[0];
+       
+        //通过数据去生成表格。
+        for(var i=0;i<data.length;i++){
+            tbody.appendChild(fn(data[i]));
+        }
+        
+        //点击添加的时候添加一条新的数据。
+        inps[2].onclick=function(){
+            //获取到新的数据。
+            var username=inps[0].value;
+            var age=inps[1].value;
+            var sex=sel.value;
+            //把数据存入一个json
+            var obj={
+                'id':data.length+1,
+                'username':username,
+                'age':age,
+                'sex':sex
+            };
+            //把数据存入data。
+            data.push(obj);
+            //在表格中添加这条数据。
+            tbody.appendChild(fn(obj));
+        }
+        //全选实现。
+        checkAll.onchange=function(){
+            //当全选的checkbox发生变化的时候，让其他的checkbox的变化和全选的一样。
+            for(var i=0;i<checkbox.length;i++){
+                checkbox[i].checked=this.checked;
+            }
+        }
+        //反选实现
+        btns[0].onclick=function(){
+            //循环所有的checkbox把他们的checked的值设置为相反的。
+            for(var i=0;i<checkbox.length;i++){
+                checkbox[i].checked=!checkbox[i].checked;
+            }
+            //当checkbox的值发生变化时查看是否都是选中的。
+            checkAll.checked=isChecked(checkbox);
+        }
+        //批量删除。
+        btns[1].onclick=function(){
+            //遍历所有的checkbox，如果是选中的就删掉包涵该checkbox的tr。
+            for(var i=0;i<checkbox.length;i++){
+                if(checkbox[i].checked){
+                    //checkbox[i].parentNode.parentNode就是包涵被选中checkbox的tr；
+                    tbody.removeChild(checkbox[i].parentNode.parentNode);
+                    i--;
+                }
+            }
+            //如果所以选项都删除掉了，就把全选的勾取消掉。
+            if(checkbox.length<1){
+                checkAll.checked=false;
+            }
+        }
+        //排序
+        mysrot(1);
+        mysrot(3);
+        function mysrot(n){
+            //点击对应的th进行排序
+            th[n].onclick=function(){
+                //先把元素集合转数组。
+                var nodes=[].slice.call(rows);
+               
+                var _this=this;
+                //对数组进行排序。
+                nodes.sort(function(a,b){
+                    //a  b代表的是数组的tr。
+                    //取出对应的内容进行排序。
+                    // console.log(this);
+                    a=a.cells[n].innerHTML;
+                    b=b.cells[n].innerHTML;
+                    if(!_this.onOff){
+                        //从小到大。
+                        return a-b;
+                    }else{
+                        //从大到小。
+                        return b-a;
+                    }
+                })
+                //排序完成把位置进行一个调换。
+                for(var i=0;i<nodes.length;i++){
+                    tbody.appendChild(nodes[i]);
+                }
+                //改变开关状态。
+                this.onOff=!this.onOff;
+            }
+        }
+        //检查checkbox的选中状态。
+        function isChecked(obj){
+            for(var i=0;i<obj.length;i++){
+                if(!obj[i].checked){
+                    return false;
+                }
+            }
+            return true;
+        }
+        //获取上一个兄弟节点。
+        function prev(node){
+            if(node&&!node.previousSibling)return null;
+            if(node.previousSibling.nodeType===1){
+                return node.previousSibling;
+            }else{
+                return prev(node.previousSibling);
+            }
+        }
+        //获取下一个兄弟节点。
+        function next(node){
+            if(node&&!node.nextSibling)return null;
+            if(node.nextSibling.nodeType===1){
+                return node.nextSibling;
+            }else{
+                return next(node.nextSibling);
+            }
+        }
+        //根据数据拼接字符串并返回。
+        function fn(data){
+            var tr=document.createElement('tr');
+            var btns=tr.getElementsByTagName('a');
+            tr.innerHTML='<td><input type="checkbox"/></td><td>'+data.id+'</td><td>'+data.username+'</td><td>'+data.age+'</td><td>'+data.sex+'</td><td><a href="javascript:;">上移</a> | <a href="javascript:;">下移</a> | <a href="javascript:;">删除</a></td>';
+            //上移下移实现。
+            btns[0].onclick=function(){
+                //找到包涵该按钮的tr的上一个兄弟节点，
+                //如果存在就交换位置。
+                var pre=prev(tr);
+                if(pre&&pre.nodeType===1){
+                    tbody.insertBefore(tr,pre);
+                }else{
+                    alert('已经是第一行了');
+                }
+            }
+            btns[1].onclick=function(){
+                //找到包涵该按钮的tr的下一个兄弟节点，如果找到了就交换位置。
+                var nex=next(tr);
+                if(nex&&nex.nodeType===1){
+                    tbody.insertBefore(nex,tr);
+                }else{
+                    alert('已经是最后一行了');
+                }
+            }
+            //删除
+            btns[2].onclick=function(){
+               tbody.removeChild(tr);
+            }
+            //选中状态
+            tr.getElementsByTagName('input')[0].onchange=function(){
+                //isChecked,如果所以的checkbox都选中就返回true，有一个没选中就返回false
+                checkAll.checked=isChecked(checkbox);
+            }
+            
+            return tr;
+        }
+
+    </script>
+</body>
+</html>

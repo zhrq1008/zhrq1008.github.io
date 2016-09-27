@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+				position: relative;
+				width: 100px;
+				height: 110px;
+				float: left;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			img{
+				height: 80px;
+				width: 90px;
+				margin-left: 5px;
+				margin-top: 20px;
+			}
+		ul input{
+				display: bolck;
+				position: absolute;
+				top:0px;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<input type="button" name="" id="" value="新建文件夹" />
+		
+		<ul>
+			
+		</ul>
+		<script type="text/javascript">
+			var inpt = document.getElementsByTagName('input')[0];
+			var ul = document.getElementsByTagName('ul')[0];
+			var str = ''
+			var onOff = false;
+			inpt.onclick = function(){
+				var li = document.createElement('li');
+				var img = document.createElement('img');
+				var input = document.createElement('input');
+				ul.appendChild(li)
+				li.appendChild(input)
+				input.type="checkbox"
+				li.appendChild(img)
+				img.src="捕获.PNG";
+				input.style.display = 'none'
+				li.onmouseover = function(){
+				input.style.display = 'block'
+				li.style.background = 'pink'
+				}
+				li.onmouseout = function(){
+				if(input.checked){
+					input.style.display = 'block'
+					li.style.background = 'pink'
+				}else{
+					input.style.display = 'none'
+					li.style.background = ''
+				}
+				
+				}
+				li.onclick = function(){
+				if(this.onOff){
+					input.checked = false
+				}else{
+					input.checked = true
+				}
+						
+					this.onOff = !this.onOff
+				
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

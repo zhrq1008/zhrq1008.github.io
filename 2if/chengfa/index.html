@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				line-height: 30px;
+				text-align: center;
+				position: absolute;
+				border: 2px solid #ccc;
+				width: 50px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<script type="text/javascript">
+			var nun = 0;
+			var str = '';
+			for (var i=1;i<10;i++) {
+				for (var j = i;j<10;j++) {
+					str += '<div style="top:'+i*50+'px;left:'+(j%10)*60+'px;">'+i+'*'+j+'='+i*j+'</div>';
+				}
+//				j*50  (i%10)*60  i*50  (j%10)*60
+			}
+			document.body.innerHTML = str;
+		</script>
+	</body>
+</html>

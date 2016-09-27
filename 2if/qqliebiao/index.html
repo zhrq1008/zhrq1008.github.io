@@ -1,0 +1,209 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	ul,ol{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color:black;
+		width: 100%;
+		text-align: center;
+	}
+	h2{
+		margin: 0;
+		background:url(img/right.gif) no-repeat  10px center #63F7FF;	
+		padding-left: 20px; 
+		line-height: 30px;
+	}
+	ul{
+		border: 1px solid black;
+		width: 150px;
+	}
+	ol{
+		display: none;
+	}
+	ol li{
+		line-height: 20px;
+		border-top: 1px solid black;
+		text-align: center;
+		display: block;
+		cursor:pointer;
+	}
+	ol li:nth-child(1){
+		border: none;
+	}
+	ol li.active{
+		background-color: #ccc;
+	}
+	h2.active{
+		background:url(img/down.gif) no-repeat  8px center #F7F794;
+	}
+	h2.active+ol{
+		display: block;
+	}
+</style>
+</head>
+
+<body>
+	<ul id="list">
+		<li>
+			<h2><a href="javascript:;">我的好友</a></h2>
+			<ol>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+				<li>张三</li>
+			</ol>
+		</li>
+		<li>
+			<h2><a href="javascript:;">企业好友</a></h2>
+			<ol>
+				<li>李四</li>
+				<li>李四</li>
+				<li>李四</li>
+				<li>李四</li>
+				<li>李四</li>
+			</ol>
+		</li>
+		<li>
+			<h2><a href="javascript:;">黑名单</a></h2>
+			<ol>
+				<li>钟毅</li>
+				<li>钟毅</li>
+				<li>钟毅</li>
+			</ol>
+		</li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript">
+	/*
+		需求：
+			点击h2，如果开着就关，如果关就开   （开关）
+			点击ol li 如果开着就关，如果关就开   （开关）
+			如果点击的不是当前的li，那么就把上次点击过的清掉。
+			
+			点击h2的时候，如果不是当前的h2，就把上一次的清掉。
+			
+	*/
+	
+	var aH2 = document.getElementsByTagName('h2');//所有的标题
+	var aOl = document.getElementsByTagName('ol');//要被蹂躏的ol
+	var prev = aH2[0];//默认为第一个
+	var prevLi = null;
+	
+	
+	
+	for(var i=0;i<aH2.length;i++){
+		aH2[i].onOff = false; //一开始*都是*关着的
+		aH2[i].index = i;//为了对应ol
+		aH2[i].onclick = function(){
+			if(this.onOff){//看看当前的h2是不是开着的？
+				//如果是...
+				this.className = '';
+				this.onOff = false;
+			}else{
+				//如果不是..
+				this.className = 'active';
+				this.onOff = true;
+			}
+			
+			if(prev!=this){ //如果说上一个不是当前的这个
+				prev.className = '';
+				/*
+					一开始点击了当前的这个，会打开，当前的onOff = true
+					
+					如果走上面这个if，那么说明现在点击的并是不上次点击的那个（点击的不是同一个）
+					
+					就把上一次的关了，那么上一次的onOff = true
+					
+					如果我再点击上一次，本来就已经关了，因为onOff = true
+					
+					所以它就没关。
+					
+					
+				*/
+				prev.onOff = false;
+			}
+			
+			prev = this;//保证这一次成为，下一次的上一次
+		}
+	}
+	
+	
+
+
+for(var i=0;i<aOl.length;i++){
+		//先找到3个ol，然后再从3个ol下去找li
+		var lis = aOl[i].getElementsByTagName('li');
+		prevLi = lis[0];
+		for(var j=0;j<lis.length;j++){
+			lis[j].onOff = false; //每个都没变色
+			lis[j].onclick = function(){
+				if(this.onOff){
+					//如果有颜色了...
+					this.className= '';
+				}else{
+					//如果没颜色...
+					this.className= 'active';
+				}
+				
+				if(prevLi!=this){
+					prevLi.className= '';
+					prevLi.onOff = false;
+				}
+				if(prevLi){
+					if(prevLi!=this){
+						prevLi.className= '';
+						prevLi.onOff = false;
+					}	
+				}
+				
+
+				prevLi = this;
+				
+				this.onOff = !this.onOff;
+				
+				/*
+					
+					一开始每个都是false
+					
+					第一次点击的时候，走false  变色
+					
+						this.onOff = !false - > true
+						
+						this.onOff = true
+					
+					第二次点击的时候，走true  清除颜色
+					
+						this.onOff = !true -> false
+						
+						this.onOff = false;
+					
+					
+					
+				*/
+				
+				
+				
+				// !true  !false true    !1  false  !0  true
+				
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>

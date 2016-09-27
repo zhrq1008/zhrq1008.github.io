@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> 移入变色</title>
+  <meta charset = 'utf-8' />
+  <style>
+    ul {width: 200px;}
+    ul li {color: #666;background-color: #eee;font-weight:bold; font-size: 14x; height: 30px; line-height: 30px; padding: 0 20px;list-style:none;}
+    ul .focus {font-size: 22px; background-color: #555;color:#fff;}
+    ul .near {font-size:18px; background-color: #ccc;color:blue;}
+    ul .none {background:#333;color:#fff;}
+    ul .side {background:orange;}
+  </style>
+ </head>
+
+ <body>
+
+  <ul id="ul1">
+    <li class="none">这是首行</li>
+    <li>111111</li>
+    <li>222222</li>
+    <li>333333</li>
+    <li>444444</li>
+    <li>555555</li>
+    <li>666666</li>
+    <li>111111</li>
+    <li>222222</li>
+    <li>333333</li>
+    <li>444444</li>
+    <li>555555</li>
+    <li class="none">这是末行</li>
+  </ul>
+
+ </body>
+</html>
+<script>
+var list = document.getElementsByTagName('ul')[0];
+var lis = list.getElementsByTagName('li');
+list.firstElementChild.onmouseover = function(){
+	this.style.background = 'orange'
+	
+}
+list.lastElementChild.onmouseover = function(){
+	this.style.background = 'orange'
+	
+}
+list.firstElementChild.onmouseout = function(){
+	this.style.background = ''
+	
+}
+list.lastElementChild.onmouseout = function(){
+	this.style.background = ''
+	
+}
+lis[1].onmouseover = function(){
+	this.className = 'none';
+	this.nextElementSibling.className = 'near';
+}
+lis[1].onmouseout = function(){
+	this.className = '';
+	this.nextElementSibling.className = '';
+}
+
+lis[11].onmouseover = function(){
+	this.className = 'none';
+	this.previousElementSibling.className = 'near';
+}
+lis[11].onmouseout = function(){
+	this.className = '';
+	this.previousElementSibling.className = '';
+}
+for(var i=2;i<lis.length-2;i++){
+	lis[i].onmouseover = function(){
+			this.className = 'none';
+			this.previousElementSibling.className = 'near';
+			this.nextElementSibling.className = 'near';
+	
+	}
+	lis[i].onmouseout = function(){
+		this.className = '';
+		this.previousElementSibling.className = '';
+		this.nextElementSibling.className = '';
+		
+	}
+	
+	
+}
+
+
+
+</script>

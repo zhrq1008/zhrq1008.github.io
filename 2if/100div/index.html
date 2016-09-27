@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				border: 1px solid #ccc;
+				position: absolute;
+				background: red;
+				width: 20px;
+				height: 20px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<input type="button" name="" id="" value="生成100DIV" />
+		<script type="text/javascript">
+		var str = '';
+		var l = 0;
+		var t = 0;
+		var arr = ['red','black','green','yellow','pink','blue',]
+		for (var i = 0 ;i<100;i++) {
+			l = i%10*30
+			t = Math.floor(i/10)*30
+			 str += '<div style = "left:'+l+'px;top:'+t+'px;background:'+arr[i%arr.length]+';">'+i+'</div>'
+		}
+			document.body.innerHTML = str;
+		</script>
+	</body>
+</html>

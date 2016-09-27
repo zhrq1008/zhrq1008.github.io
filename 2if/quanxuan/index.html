@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul , p { width:300px; padding:0; margin:0; margin:0 auto; }
+p { padding-top:20px; }
+li { list-style:none; border-bottom:1px solid #333; height:30px; line-height:30px; }
+.yellow{
+	background-color: yellow;
+}
+.red{
+	background-color: red;
+}
+.hover{
+	background-color: black;
+}
+</style>
+</head>
+
+<body>
+
+<ul>
+	<li><input type="checkbox" /></li>
+	<li><input type="checkbox" /></li>
+	<li><input type="checkbox" /></li>
+	<li><input type="checkbox" /></li>
+	<li><input type="checkbox" /></li>
+</ul>
+<p><input type="checkbox" id="all"/> 全选</p>
+
+<script>
+	var all=document.getElementById('all');
+	var oUl=document.getElementsByTagName('ul')[0];
+	var checkbox=oUl.getElementsByTagName('input');
+	var aLi=oUl.getElementsByTagName('li');
+
+	for(var i=0;i<aLi.length;i++){
+		if(i%2){//隔行变色。
+			aLi[i].className='yellow'
+		}else{
+			aLi[i].className='red';
+		}
+		//保存li原本的颜色。
+		aLi[i].color=aLi[i].className;
+		//hover效果。
+		aLi[i].onmouseover=function(){
+
+			this.className='hover';
+		}
+		aLi[i].onmouseout=function(){
+			this.className=this.color;
+		}
+		//选中改变颜色实现。
+		checkbox[i].index=i;
+		checkbox[i].onchange=function(){
+			//注意css的优先级。
+
+			if(this.checked){
+				aLi[this.index].style.background='green';
+			}else{
+				aLi[this.index].style.background='';
+				// aLi[this.index].className=aLi[this.index].color;
+			}
+
+			//是否全选。
+
+			all.checked=isCheckedAll(checkbox);
+		}
+	}
+
+	//如果都是选中状态就返回true，否则false
+	function isCheckedAll(eles){
+		for(var i=0;i<eles.length;i++){
+			if(!eles[i].checked){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	
+	all.onchange=function(){
+		//在全选复选框发生变化的时候把所有的复选框的状态同步一下。
+		for(var i=0;i<checkbox.length;i++){
+			checkbox[i].checked=this.checked;
+			if(this.checked){
+				aLi[i].style.background='green';
+			}else{
+				aLi[i].style.background='';
+				
+			}
+		}
+	}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		#box{
+			top: 50px;
+			position: absolute;
+		}
+			#box div{
+				background:pink;
+				position: absolute;
+				height: 50px;
+				width: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="color"  >
+		<input type="number" >
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+		var boxs = document.getElementById('box');
+		
+		var inps = document.getElementsByTagName('input');
+		
+		var nun = 0;
+		
+		for (var i =0;i<inps.length;i++) {
+			inps[1].oninput = function(){
+				if(this.value<0){//限制最小值
+					this.value = 0;
+				}
+				if(this.value>10){//限制最大值
+					this.value = 10;
+				}
+				var colors = inps[0].value;//value的颜色值
+				box.innerHTML = '';
+				fn(this.value,0,colors);//实际参数
+			}
+		}
+		function fn(len,top,color){//形参
+			var str = '';
+			for(var i=0;i<len;i++){//DIV循环10个
+				str += '<div style="left:'+i*60+'px;top:'+top+'px;background-color:'+color+';"></div>'
+			}
+			box.innerHTML = str;
+		}
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.active{
+			background-color: yellow;
+		}
+		p{
+			display: none;
+		}
+		.show{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+		<input type="text"id="text" />
+		<input type="button" value="验证"id="btn" >
+		
+		
+<script type="text/javascript">
+/*
+			qq：
+				1、qq号中不能包涵空格
+				2、不能有小数
+				3、第一位不能是0
+				4、5-10数
+
+		*/
+		
+		var inps = document.getElementsByTagName('input')
+		inps[1].onclick = function(){
+			var value = inps[0].value;
+			//不能什么都不输入
+			if(value == ''){
+				alert('请输入QQ号');
+				return;
+			}
+			//不能为空格
+			for (var i=0;i<value.length;i++) {
+				if(value[i] == ' '){
+					alert('你输入了个空格');
+					return;
+				}
+			}
+			//输入为数字
+			if(isNaN(Number(value))){
+				alert('只能为数字');
+				return;//阻止运行；
+			}
+			//第一位不能为零
+			if(value[0] == '0'){
+				alert('不能为0');
+				return;//阻止运行；
+			}
+			//最少输入五位数
+			if(value.length<5){
+				alert('最少输入五位数');
+				return;//阻止运行；
+			}
+			//最多输入10位数
+			if(value.length>11){
+				alert('最多输入10位数');
+				return;//阻止运行；
+			}
+			//判断输入任意数字不能为小数；
+			for (var i=0;i<value.length;i++) {
+				if(value[i] == '.'){
+				alert('数字不能为小数');
+				return;//阻止运行；
+				}
+			}	
+		}
+</script>
+	</body>
+</html>

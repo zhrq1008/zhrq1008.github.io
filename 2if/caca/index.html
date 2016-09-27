@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*input{
+				color: #000;
+				font-size:30px;
+				width: 100px;
+				height: 100px;
+			}*/
+			#box{
+				position: relative;
+				background-size: 500px 500px;
+				background-image:url(img/2.jpg);
+				width: 500px;
+				height: 500px;
+			}
+			#box div{
+				cursor: pointer;
+				transition:0.5s;
+				position: absolute;
+				background: #ccc;
+				
+				border: 1px solid #000;
+				height: 50px;
+				width: 50px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<!--<input type="button"  value="0" />
+		<input type="button"  value="0" />
+		<input type="button"  value="0" />
+		<input type="button"  value="0" />
+		<script type="text/javascript">
+			var btns = document.getElementsByTagName('input');
+			var arr = ['A','B','C','D'];
+			for (var i=0;i<btns.length;i++) {
+//				自定义属性
+				btns[i].num = 0;
+				btns[i].onclick=function(){
+					this.value = arr[this.num];
+					this.num++;
+					if (this.num==arr.length) {
+						this.num = 0;
+					}
+				}
+			}
+		</script>-->
+		<script type="text/javascript">
+			var box = document.getElementById('box')
+			var str = '';
+			var l = '0';
+			var t = '0';
+			for (var i=0;i<100;i++) {
+				l = i%10*50;
+				t = Math.floor(i/10)*50	;	
+				str += '<div style="left:'+l+'px;top:'+t+'px;">'+i+'</div>';
+			}
+			box.innerHTML = str;
+			var divs = box.getElementsByTagName('div')
+			for (var i=0; i<100;i++) {
+				divs[i].onmousemove = function(){
+					this.style.opacity = 0;
+					this.style.transform = "scalse(9)";
+				}
+			}
+		</script>
+	</body>
+</html>

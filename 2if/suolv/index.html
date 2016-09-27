@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				
+				position: relative;
+				margin: 50px auto;
+				border: 2px solid #000;
+				height: 400px;
+				width: 400px;
+			}
+			#box img{
+				width: 100%;
+				height: 100%;
+			}
+			#box a{
+				background: pink;
+				color: #000;
+				text-align: center;
+				line-height: 50px;
+				font-weight: bold;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				font-size: 30px;
+				text-decoration: none;
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;
+			}
+			#prev{
+				left: 10px;
+			}
+			#next{
+				right: 10px;
+			}
+			ul{
+				text-align: center;
+				width: 100%;
+				left: 0;
+				bottom: 10px;
+				position: absolute;
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				display: inline-block;
+				position: relative;
+				border-radius: 50%;
+				background: pink;
+				border: 2px solid #ccc;
+				height: 20px;
+				width: 20px;
+				
+				list-style: none;
+			}
+			#box li img{
+				left: -40px;
+				top: -120px;
+				position: absolute;
+				width: 100px;
+				height: 100px;
+			}
+			#box li div{
+				top: -20px;
+				position: absolute;
+				border: 10px solid transparent;
+				border-top-color: red;
+			}
+			.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/0.jpg" id="img"/>
+			<a href="javascritpt:;" id="prev"><</a>
+			<a href="javascritpt:;" id="next">></a>
+				<ul id="list">
+					<li class="active">
+						<!--<img src="img/0.jpg"/>
+						<div id=""></div>-->
+					</li>
+					<li></li>
+					<li></li>
+					<li></li>
+					
+				</ul>
+		</div>
+		<script type="text/javascript">
+			var list = document.getElementById('list')
+			var prev = document.getElementById('prev');
+			var next = document.getElementById('next');
+			var img = document.getElementById('img');
+			var pic = document.getElementById('pic');
+			var lis = document.getElementsByTagName('li');
+			var arr = ['0.jpg','1.jpg','2.jpg','3.jpg'];
+			var num = 0;
+			//焦点对应相对的图片
+			for (var i=0;i<lis.length;i++) {
+				//自定义属性
+				lis[i].index = i
+				//给焦点添加点击事件
+				lis[i].onclick = function(){
+					for (var i=0;i<lis.length;i++) {
+						//点击前清空焦点颜色
+						lis[i].className = '';
+					}
+					//给焦点加上颜色
+					this.className = 'active';
+					//点击切换对应图片
+					img.src = 'img/'+arr[this.index];
+					//当前点击对应的数
+					num = this.index;
+				}
+			}
+			//点击按钮向下循环播放
+			next.onclick = function(){
+				num++;
+				//当图片加载到最后一张转到第一张
+				if(num>arr.length-1){
+					num=0;
+				}
+				//图片循环到下一张
+				img.src = 'img/'+arr[num];
+				//点击清空焦点颜色
+				for (var i=0;i<lis.length;i++) {
+						lis[i].className = '';		
+				}
+				//点击的焦点加颜色
+				lis[num].className = 'active';
+			   
+			};
+			//向上循环播放
+			prev.onclick = function(){
+				num--;
+				//如果向上到第一张自动切换到最后一张
+				if(num<0){
+					num = arr.length-1;
+				}
+				//图片切换到下一张
+				img.src = 'img/'+arr[num];
+				//清空当前焦点颜色
+				for (var i=0;i<lis.length;i++) {
+						lis[i].className = '';
+					}
+				//给当前焦点加颜色
+				lis[num].className = 'active';
+				
+			}
+		
+			for (var i=0; i<lis.length;i++) {
+				//鼠标移入事件
+				lis[i].onmouseover = function(){
+					for (var i=0; i<lis.length;i++) {
+						//清除焦点当前颜色
+						lis[i].style.backgroundColor = '';
+					};
+					//如果焦点当前颜色等于active
+					if (this.className == 'active') {
+						//焦点颜色为active
+						this.className = 'active'
+//						this.style.backgroundColor = 'red';
+					} else{
+						//否则为yellow
+						this.style.backgroundColor = 'yellow';
+					}
+					//鼠标移入，上个缩略清空
+					for (var i=0; i<lis.length;i++) {
+						lis[i].innerHTML = '';
+					}
+					this.innerHTML = '<img src="img/'+arr[this.index]+'"/ ><div ></div>';
+				};
+			
+////				鼠标移出事件缩略图为空
+				lis[i].onmouseout = function(){
+					for (var i=0; i<lis.length;i++) {
+						this.innerHTML = '';
+					}
+						if (this.className == 'active') {
+						//焦点颜色为red
+							this.className = 'active'
+//						
+							} else{
+								//否则为yellow
+								this.style.backgroundColor = 'pink';
+							}
+					
+				
+				}
+				}
+		</script>
+	</body>
+</html>

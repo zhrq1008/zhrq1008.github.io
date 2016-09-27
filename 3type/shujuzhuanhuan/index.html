@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=['100px','abc'-6,[],-98765,34,-2,0,'300', ,function(){alert(1);},
+	null,document,[],true,'200px'-30,'23.45元',5,Number('abc'),function(){alert(3);},
+	'xyz'-90];
+	 /*
+     1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+     2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5
+
+     3、把转成数字以后，最大值判断出来：300
+     4、把 NaN 所在的位置找出来：1 14 17  19*/
+   			var num = null;
+   			var num1 = '找到arr里所有的数字：';
+   			var num2 = '找到可以转成数字的：';
+   			var num3 = '';
+   			var num4 = '把 NaN 所在的位置找出来：';
+   			for (var i=0;i<arr.length;i++) {
+   				n = arr[i] ;
+   			
+   				if (typeof n === 'number'&&!isNaN(n)) {
+   					num1 += n + ' /';
+   				}
+   				if(!isNaN(parseFloat(n))){
+   					num2 += n + ' /';
+   					if (num === null) {
+   						num = n;
+   					}if (parseFloat(num)<parseFloat(n)) {
+   						num = n ;
+   					}
+   				}
+   				if (n !== n ) {
+   					num4 += i + ' /';
+   				}
+   			}
+   			document.body.innerHTML += num1+'<br>';
+   			document.body.innerHTML += num2+'<br>';
+   			document.body.innerHTML += '把转成数字以后，最大值判断出来：'+num+'<br>';
+   			document.body.innerHTML += num4+'<br>';
+		</script>
+		
+	</body>
+</html>

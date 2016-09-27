@@ -1,0 +1,133 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	#box{
+		width:600px;
+		height: 500px;
+		margin: 0 auto;
+		border: 5px solid #ccc;
+		padding: 5px;
+	}
+	#tab span{
+		line-height: 40px;
+		width: 50px;
+		display: inline-block;
+		position: relative;
+		
+		margin-left: 5px;
+	}
+	#tab span i{
+		font-style: normal;
+		color:red;
+		position: absolute;
+		top:-5px;
+		right: 0;
+		cursor: pointer;
+	}
+	#content div{
+		margin-top: 5px;
+		font-size: 30px;
+		line-height: 460px;
+		text-align: center;
+		display: none;
+		background-color: yellow;
+	}
+	#content .show{
+		display: block;
+	}
+	#tab .active{
+		background-color: #ccc;
+		color: white;
+	}
+</style>
+
+</head>
+
+<body>
+	<a href="javascript:;">窗口1</a>
+	<a href="javascript:;">窗口2</a>
+	<a href="javascript:;">窗口3</a>
+	<a href="javascript:;">窗口4</a>
+	<a href="javascript:;">窗口5</a>
+	<div id="box">
+		<div id="tab">
+			 <!--<button class="active">选项1</button>
+			<button>选项2</button>
+			<button>选项3</button>
+			<button>选项4</button>
+			<button>选项5</button> -->
+		</div>
+		<div id="content">
+			 <!--<div class="show">内容1</div>
+			<div>内容2</div>
+			<div>内容3</div>
+			<div>内容4</div>
+			<div>内容5</div> -->
+		</div>
+	</div>
+	<script type="text/javascript">
+	/*
+		1、添加选项卡
+		2、实现选项卡的功能
+		3、删除选项卡
+	*/
+	var as = document.getElementsByTagName('a');
+	var tab = document.getElementById('tab');
+	var content = document.getElementById('content')
+	
+	for(var i=0;i<as.length;i++){
+		
+		as[i].onclick = function(){
+			if(this.onOff)return;
+			var a = document.createElement('a');
+			var butn = document.createElement('span');
+			var div  = document.createElement('div');
+			a.innerHTML = this.innerHTML
+			butn.innerHTML = '<i>x</i>'
+			div.innerHTML = this.innerHTML+'内容';
+			butn.appendChild(a)
+			tab.appendChild(butn) ;
+			content.appendChild(div);
+			var the = this
+			this.onOff = true;
+			//删除
+			butn.children[0].onclick = function(){
+				tab.removeChild(butn);
+				content.removeChild(div);
+				//判断删除是不是加有className；
+				if(butn.className == 'active'&&tab.children.length>0){
+					tab.children[0].className = 'active';
+					content.children[0].className = 'show';
+				}
+				the.onOff = false;
+			}
+			//选项卡切换
+			butn.children[1].onclick = function(){
+				for(var i=0;i<tab.children.length;i++){
+				tab.children[i].className ='';
+				content.children[i].className ='';
+				}
+				
+				butn.className = 'active';
+				div.className = 'show';
+				
+				
+			}
+			//清空所有
+			for(var i=0;i<tab.children.length;i++){
+				tab.children[i].className ='';
+				content.children[i].className ='';
+				
+			}
+			//生成后加上样式
+			butn.className = 'active';
+			div.className = 'show';
+		}
+	}
+	
+	</script>
+</body>
+</html>

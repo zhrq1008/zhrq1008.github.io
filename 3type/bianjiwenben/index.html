@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				width: 500px;
+				height: 20px;
+				border-bottom: 2px solid green;
+			}
+			li div{
+				display: none;
+			}
+			#box{
+				background: pink;
+				height: 400px;
+				width: 500px;
+			}
+			h4{
+				color: white;
+				background: green;
+			}
+			
+			.trigger p{
+				display: none;
+			}
+			.trigger div{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<h4>分类名称</h4>
+			<ul id="list">
+				<li>
+					<p>
+						<span >
+							妙味课堂
+						</span>
+						<img src="img/12.jpg"/>
+					</p>	
+					<div>
+						<input type="text" id="text"value="妙味课堂"/>
+						<a href="javascript:;" class="btn">保存</a>
+						<a href="javascript:;" class="btn">取消</a>
+					</div>
+				</li>
+				<li>
+					<p>
+						<span >
+							妙味课堂
+						</span>
+						<img src="img/12.jpg"/>
+					</p>	
+					<div>
+						<input type="text" id="text"value="妙味课堂"/>
+						<a href="javascript:;" class="btn">保存</a>
+						<a href="javascript:;" class="btn">取消</a>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<script type="text/javascript">
+			var div = document.getElementById('box');
+			var ul = document.getElementById('list');
+			var lis = ul.getElementsByTagName('li');
+			
+			var str = '';
+			var len = 10;
+//			for(var i=0;i<len;i++){
+//				str += '<li><span >妙味课堂</span><img src="img/12.jpg"/></li>'
+//			}
+//			ul.innerHTML = str;
+			for(var i=0;i<lis.length;i++){
+				fn(lis[i]);
+			}
+			function fn(obj){
+				var span = obj.getElementsByTagName('span')[0];
+				var imgs = obj.getElementsByTagName('img')[0];
+				var texts = obj.getElementsByTagName('input')[0];
+				var as = obj.getElementsByTagName('a');
+			
+				//给img加点击事件
+				imgs.onclick = function(){
+					span.innerHTML = texts.value;
+					obj.className = 'trigger';
+				};
+				//点击保存
+				as[0].onclick = function(){
+					if(texts.value != ''){
+						span.innerHTML = texts.value;
+					}
+					obj.className = '';
+				};
+				//点击取消
+				as[1].onclick = function(){
+					obj.className = '';
+				};
+			}	
+		</script>
+	</body>
+</html>
