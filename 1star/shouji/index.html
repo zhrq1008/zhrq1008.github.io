@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			form,button,input{
+				padding: 0; 
+				margin: 0;
+				border: -none;
+				background: none;
+			}
+			.fl{
+				float: left;
+			}
+			.fr{
+				float: right;
+			}
+			#box{
+				position: relative;
+				margin: 50px auto;
+				height: 594px;
+				width:289px;
+				background: url(img/1.jpg) no-repeat;			
+			}
+			#screen{
+				top: 87px;
+				left: 26px;
+				position: absolute;
+				height: 370px;
+				width: 237px;
+				overflow: auto;
+			}
+			form{
+				left: 26px;
+				bottom: 88px;
+				position: absolute;
+				height: 48px;
+				width:235px;
+				border: 1px solid #bdcec6;
+				background: white;
+			}
+			form a{
+				margin-left: 3px;
+				margin-top: 8px;
+				padding: 4px 3px;
+				display: inline-block;
+				border: 1px solid #000;
+				border-radius: 6px;
+			}
+			#text{
+				left: 41px;
+				top: 7px;
+				position: absolute;
+				margin-left: -2px;
+				border-radius: 6px;
+				width: 139px;
+				height: 32px;
+			}
+			#fasong{
+				border: none;
+				right: 6px;
+				top: 12px;
+				position: absolute;
+				font-size: 21px;
+			}
+			p:after{
+				content:'' ;
+				display: block;
+				clear: both;
+			}		
+			#left{
+				margin-right: 5px;
+				background: #ded6e7;
+				max-width: 180px;
+				line-height: 18px;
+				float: left;
+			}
+			#right{
+				margin-left: 5px;
+				background: #21c618;
+				max-width: 180px;
+				line-height: 18px;
+				float: right;
+			}
+			#fl img{
+				float: left;
+			}
+			#fr img{
+				float: right;
+			}
+		</style>		
+	</head>
+	<body>		
+		<div id="box" >
+			<div id="screen">
+				<!--<p id="fl">
+					<img src="本节练习/img/2.jpg"/>
+					<span id="left">
+					我是土豪
+					</span>
+				</p>
+				<p id="fr">
+					<img src="本节练习/img/3.jpg"/>
+					<span id="right" >
+					我是土豪
+					</span>
+				</p>-->
+			</div>
+			<form action="" method="post">
+				<a href="javascript:;" id="dabing"><img src="img/2.jpg"/></a>
+				<input type="text" value="" id="text"/>
+				<input type="button" value="发送" id="fasong"/>
+			</form>		
+		</div>
+		<script type="text/javascript">
+			var screen = document.getElementById('screen');
+			var dabing = document.getElementById('dabing');
+			var text = document.getElementById('text');
+			var fasong = document.getElementById('fasong');
+			var onOff = true;			
+			dabing.onclick = function(){
+				if(onOff){
+					dabing.innerHTML = '<img src="img/3.jpg"/>';
+					onOff = false;
+				}else{
+					dabing.innerHTML = '<img src="img/2.jpg"/>';
+					onOff = true;
+				}
+			};			
+			fasong.onclick = function(){
+				if(text.value == ''){
+					screen.innerHTML = '';
+				}
+				else if(onOff){
+					screen.innerHTML ='<p id="fl"><img src="img/2.jpg"/><span id="left">'+'说:'+text.value+'</span></p>'+screen.innerHTML;
+					
+				}else{
+					screen.innerHTML ='<p id="fr"><img src="img/3.jpg"/><span id="right">'+'说:'+text.value+'</span></p>'+screen.innerHTML;
+					
+				}
+			};
+		</script>
+	</body>
+</html>

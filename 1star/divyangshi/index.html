@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+			background: red;
+		}
+		#box{
+			position: relative;
+			padding: 30px;
+			background: gray;
+			height: 600px;
+			width: 800px;
+			/*opacity: 0.4;*/
+			margin: 50px auto;
+			
+		}
+		#text{
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		#jianbian{
+			background: white;
+			border: 5px solid #000;
+			height: 100px;
+			width: 100px;
+		}
+		#rest{
+			display: none;
+			line-height: 30px;
+			padding: 10px;
+			font-weight: bold;
+			font-size: 20px;
+			position: absolute;
+			left: 500px;
+			top: 350px;
+			border: 10px solid lightcoral;
+		}	
+		#clor1{
+			padding: 5px;
+			background: greenyellow;
+			color:white ;
+		}	
+		#clor2{
+			padding: 5px;
+			background: yellow;
+			color:white ;
+		}	
+		#clor3{
+			padding: 5px;
+			background: blue;
+			color:white ;
+		}
+		#right{
+			text-align: center;
+		}
+		#right a{
+			border-radius: 50%;
+			padding: 0 3px;
+		}	
+		#height a,#width a{
+			border: 1px solid black;
+			color: black;
+			padding: 2px;
+			font-size: 16px;
+			background: lavender;
+		}
+		#width a:hover,#height a:hover{
+			background: bisque;
+		}
+		#bg a:hover{
+			border: 1px solid black;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="text">
+				请为下面的DIV设置样式:
+				<a href="#" id="a">点击设置</a>
+			</div>
+			<div id="jianbian">
+				
+			</div>
+			<div id="rest">
+				<div id="bg">
+					请选择背景颜色：
+					<a href="#" id="clor1">红</a>
+					<a href="#" id="clor2">黄</a>
+					<a href="#" id="clor3">蓝</a>
+				</div>
+				<div id="width">
+					请选择宽度(PX)：
+					<a href="#"id="w2">200</a>
+					<a href="#"id="w3">300</a>
+					<a href="#"id="w4">400</a>
+				</div>
+				
+				<div id="height">
+					请选择长度(PX)：
+					<a href="#"id="h2">200</a>
+					<a href="#"id="h3">300</a>
+					<a href="#"id="h4">400</a>
+				</div>
+				<div id="right">
+					<a href="#"id="fuwei">恢复</a>
+					<a href="#"id="ok">确定</a>
+				</div>								
+			</div>			
+		</div>
+		<script type="text/javascript">
+			var a = document.getElementById('a');
+			var clor1 = document.getElementById('clor1');
+			var clor2 = document.getElementById('clor2');
+			var clor3 = document.getElementById('clor3');
+			var w2 = document.getElementById('w2')
+			var w3 = document.getElementById('w3')
+			var w4 = document.getElementById('w4')
+			var h2 = document.getElementById('h2')
+			var h3 = document.getElementById('h3')
+			var h4 = document.getElementById('h4')
+			var ok = document.getElementById('ok')
+			var fuwei = document.getElementById('fuwei')
+			a.onclick = function(){
+				rest.style.display = 'block';
+				box.style.background = 'pink';
+			};
+			clor1.onclick = function(){
+				jianbian.style.background = 'red';
+			};
+			clor2.onclick = function(){
+				jianbian.style.background = 'yellow';
+			};
+			clor3.onclick = function(){
+				jianbian.style.background = 'blue';
+			};
+			w2.onclick = function(){
+				jianbian.style.width = '200px';
+			};
+			w3.onclick = function(){
+				jianbian.style.width = '300px';
+			};
+			w4.onclick = function(){
+				jianbian.style.width = '400px';
+			};
+			h2.onclick = function(){
+				jianbian.style.height = '200px';
+			};
+			h3.onclick = function(){
+				jianbian.style.height = '300px';
+			};
+			h4.onclick = function(){
+				jianbian.style.height = '400px';
+			};
+			ok.onclick = function(){
+				rest.style.display = 'none'	;
+				box.style.background = 'gray';
+			};			
+			fuwei.onclick = function(){
+				jianbian.style.height = '100px';
+				jianbian.style.width = '100px';
+				jianbian.style.background = 'white'	;		
+				
+			};
+			
+			
+			
+		</script>
+	</body>
+</html>
