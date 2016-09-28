@@ -219,7 +219,7 @@ var casees = [
 					publishTime:"2016-9-26 13:09",
 					caseThumbnail:"images/case/1/suiji.gif",
 					caseDescription:"随机数Math.random(),数组方法reverse",
-					caseWebsite:"zhrq1008.github.io/5string/shuiji/"
+					caseWebsite:"zhrq1008.github.io/5string/suiji/"
 
 				},
 				{
