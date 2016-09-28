@@ -380,7 +380,7 @@ var casees = [
 					publishTime:"2016-9-28 17:32",
 					caseThumbnail:"images/case/1/shubiaotu.gif",
 					caseDescription:"鼠标事件、键盘事件",
-					caseWebsite:"zhrq1008.github.io/9tuozhuai/shubiaotu/"
+					caseWebsite:"zhrq1008.github.io/9tuozhuai/huaqietu/"
 
 				}
 			]

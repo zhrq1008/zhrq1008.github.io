@@ -3,123 +3,132 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<script type="text/javascript" src="mTween.js"></script>
+		<script type="text/javascript" src="tween.js"></script>
 		<style>
 			ul{
 				margin: 0;
 				padding: 0;
-				position: relative;
-				height: 170px;
-				overflow: hidden;
+				list-style: none;
 			}
 			li{
-				list-style: none;
-				width: 120px;
-				height: 170px;
-				position: relative;
 				float: left;
+				width: 50px;
+				height: 70px;
+				/*overflow: hidden;
+				position: relative;*/
 			}
 			div{
-				height: 170px;
-				position: absolute;
-				top: 0;
+				width: 50px;
+				height: 70px;
+				margin: 0px auto;
 			}
 			img{
-				width: 120px;
-				height: 100%;
 				vertical-align: top;
+				width: 100%;
+				height: 100%;
 			}
 		</style>
-		<script type="text/javascript" src="js/tween.js"></script>
-		<script type="text/javascript" src="js/mTween.js"></script>
 	</head>
 	<body>
 		<ul>
 			<li>
-				<div><img src="img/0.jpg" alt=""></div>
+				<div>
+					<img src="imgage/0.jpg"/>
+				</div>
 			</li>
 			<li>
-				<div><img src="img/0.jpg" alt=""></div>
+				<div>
+					<img src="imgage/0.jpg"/>
+				</div>
 			</li>
 			<li>
-				<img src="img/colon.jpg" alt="">
+				<img src="imgage/c.jpg"/>
 			</li>
 			<li>
-				<div><img src="img/0.jpg" alt=""></div>
+				<div>
+					<img src="imgage/0.jpg"/>
+				</div>
 			</li>
 			<li>
-				<div><img src="img/0.jpg" alt=""></div>
+				<div>
+					<img src="imgage/0.jpg"/>
+				</div>
 			</li>
 			<li>
-				<img src="img/colon.jpg" alt="">
+				<img src="imgage/c.jpg"/>
 			</li>
 			<li>
-				<div><img src="img/0.jpg" alt=""></div>
+				<div>
+					<img src="imgage/0.jpg"/>
+				</div>
 			</li>
 			<li>
-				<div><img src="img/0.jpg" alt=""></div>
+				<div>
+					<img src="imgage/0.jpg"/>
+				</div>
 			</li>
 		</ul>
-		<script type="text/javascript">
-			var divs = document.getElementsByTagName('div');
-			var imgs = document.querySelectorAll('li>img');
-			//用来记录上一次的时间
-			var old = getTime();
-			//初始化时间
-			for(var i=0;i<old.length;i++){
-				divs[i].getElementsByTagName('img')[0].src = 'img/'+old[i]+'.jpg';
-			}
-			
-			setInterval(function(){
-				fn();
-				var time = getTime();
-				for(var i=0;i<time.length;i++){
-					//拿上次的时间和这次的时间进行对比，如果有变化就切换图片
-					if(old[i] != time[i]){
-						slied(i,time[i]);
-					}
-				}
-				//更新时间
-				old = time;
-			}, 1000);
-			//点的闪烁
-			function fn(){
-				imgs[0].src = 'img/colon.jpg';
-				imgs[1].src = 'img/colon.jpg';
-
-				setTimeout(function(){
-					imgs[0].src = 'img/colon1.jpg';
-					imgs[1].src = 'img/colon1.jpg';
-				}, 500);
-			}
-			//获取时间
-			function getTime(){
-				var date = new Date();
-				var h = date.getHours();
-				var m = date.getMinutes();
-				var s = date.getSeconds();
-				var time = toTwo(h)+toTwo(m)+toTwo(s);
-				return time;
-			}
-			//图片翻转实现
-			function slied(n,time){
-				var imgs = divs[n].getElementsByTagName('img')[0];
-				//实现翻转
-				mTween(divs[n],'top',85,400,'linear',function(){
-					imgs.src = 'img/'+time+'.jpg';
-					mTween(divs[n],'top',0,400,'linear');
-					mTween(divs[n],'height',170,400,'linear');
-				});
-				mTween(divs[n],'height',0,400,'linear');
-			}
-			//补0
-			function toTwo(n){
-				return n<10?'0'+n:''+n;
-			}	
-		</script>
 	</body>
+	<script>
+		var imgs = document.querySelectorAll('div img');
+		var Imgs = document.querySelectorAll('li>img');
+		var divs = document.querySelectorAll('div');
+//		var div1 = document.getElementById('div1');
+		var date = new Date();
+		var h = date.getHours();
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+		var time = totwo(h)+totwo(m)+totwo(s);
+		//字符串，console.log(time)是个字符串，所以我们可以取下标。
+		for(var i = 0;i<imgs.length;i++){
+			imgs[i].src ='imgage/'+time[i]+'.jpg';
+		}//初始化
+		fn();
+		function fn(){
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			var time = totwo(h)+totwo(m)+totwo(s);
+			//字符串，console.log(time)是个字符串，所以我们可以取下标。
+			fn1(5);
+			if(time[5] == 0){
+				fn1(4);//判断s的十位
+			}
+			if(totwo[s] == '00'){
+				fn1(3);//判断m的个位
+			}
+			if(totwo[s] == '00'&& time[3] == 0){
+				fn1(2);//判断m的十位
+			}
+			if(totwo[s] == '00'&& totwo[m] == '00'){
+				fn1(1);//判断h的个位
+			}
+			//传参，翻转，改变图片的宽度。
+			function fn1(t){
+				//让div的宽度为0
+				mTween(divs[t],'width',0,300,'linear',function(){
+					//更换图片。
+					divs[t].getElementsByTagName('img')[0].src = 'imgage/'+time[t]+'.jpg';
+					mTween(divs[t],'width',50,300,'linear')//再让图片的宽度回到最终的值。
+				})
+			}
+		}
+		setInterval(function(){
+			fn();
+			setTimeout(function(){
+				for(var i = 0;i<Imgs.length;i++){
+					Imgs[i].src = 'imgage/b.jpg';
+				}
+			},500)//隔500毫秒换张图片。
+			for(var i = 0;i<Imgs.length;i++){
+				Imgs[i].src = 'imgage/c.jpg';
+			}
+		},1000)
+		
+		function totwo(n){
+			return n<10? '0'+n:''+n;//三元运算判断。
+		}
+	</script>
 </html>
-
-
-
-
-	
