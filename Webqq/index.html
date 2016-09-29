@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>zhrq</title>
+		<link rel="icon" href="image/man-icon.icon" />
+		<link rel="stylesheet" type="text/css" href="rest.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript"src="mTween.js"></script>
+		<script type="text/javascript"src="tween.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript"src="web.js"></script>
+		<!--顶部登陆-->
+		<div id="nav">
+			<div id="topNav">
+				<a href="javascript:;">换肤</a><span>|</span>
+				<a href="javascript:;">登录</a><span>|</span>
+				<a href="javascript:;">注册</a>
+			</div>
+		</div>
+		<!--桌面背景图-->
+		<div id="Wbg">
+			<img src="image/bgs/bg7.jpg"/>
+		</div>
+		<!--登陆界面-->
+		<div id="loading">
+			<div id="login_top" class="top">
+				<span>
+					<i></i>
+					<i></i>
+				</span>
+			</div>
+			<div class="info">
+				<form>
+					<div>
+						用户名  <input id="user" type="text" value="" placeholder="QQ号/手机号"/>
+					</div>
+					<div>
+						密&nbsp;码  <input id="pas" type="text" value="" placeholder="字母或数字"/>
+					</div>
+					<p><label><input id="remember" type="checkbox">记住我的密码</label></p>
+					<a href="javascript:;">注册</a>
+					<input id="log" type="button" value="登陆"/>
+				</form>
+			</div>
+		</div>
+		<!--注册界面-->
+		<form id="land"  method="post">
+			<div id="land_top" class="l-top">
+				<span>
+					<i></i>
+					<i></i>
+				</span>
+			</div>
+			<ul class="land_con">
+				<li>
+					<span class="name1">&nbsp;用户名：</span>
+					<input class="xinxi" id="username" type="text" name="username"/>
+					<span class="name2">*请输入您的手机号</span>					
+				</li>
+				<li>
+					<span class="name1">&nbsp;&nbsp;密码：</span>
+					<input class="xinxi" type="text" id="password" name="password"/>
+					<span class="name2">*密码为6-12个字符区分大小写</span>
+				</li>
+				<li>
+					<span class="name1">确认密码：</span>
+					<input class="xinxi" type="text" id="password1" name="password1"/>
+					<span class="name2">*请再次输入密码</span>
+				</li>
+				<li class="sex">
+					<span class="name1">性别：</span>
+					<input  type="radio" name="sex" value="男" id="man" checked="checked"/>
+					<label for="man">男</label>
+					<input  type="radio" name="sex" value="女" id="woman"/>
+					<label for="woman">女</label>
+				</li>
+				<li><input class="register" value="马上注册" id="register" type="button" name="register"></li>
+
+			</ul>
+		</form>	
+		<!--登陆状态-->
+		<div id="landing">
+			<div class="landingPic">
+				<img id="qq_pic" src="images/gn/man.png" alt="男">
+			</div>
+			<span><a href="javascript:;">用户在线中</a></span>
+			<div class="select" id="select">
+				<ul class="land_info">
+					<li><a href="javascript:;">修改密码</a></li>
+					<li><a href="javascript:;">注销</a></li>
+				</ul>
+			</div>
+			<div class="sjx">
+				<img id="jiantou" src="images/jiantou.png">
+			</div>
+		</div>
+		<!--修改密码界面-->
+		<div id="change_password" style="display:none">
+			<div id="change_top" class="top"></div>
+			<div class="info">
+				<form>
+					<div>
+						原密码  <input id="ori_pas" type="text" value=""/>
+					</div>
+					<div>
+						新密码  <input id="new_pas" type="text" value=""/>
+					</div>
+					<div class="btn">
+						<input id="yes" type="button" value="确定"/>
+						<input id="no" type="button" value="取消"/>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--左侧菜单栏-->
+		<div id="Menu">
+			<ul id="Menu_a">
+				<li title="应用市场"><a href="javascript:;"><img src="image/left/left1.png" alt="应用市场"/></a></li>
+				<li title="我的网盘"><a href="javascript:;"><img src="image/left/left2.png" alt="我的网盘"/></a></li>
+				<li title="qq"><a href="javascript:;"><img src="image/left/left3.png" alt="qq"/></a></li>
+				<li title="qq空间"><a href="javascript:;"><img src="image/left/left4.png" alt="qq空间"/></a></li>
+				<li title="qq邮箱"><a href="javascript:;"><img src="image/left/left5.png" alt="qq邮箱"/></a></li>
+				<li title="腾讯微博"><a href="javascript:;"><img src="image/left/left6.png" alt="腾讯微博"/></a></li>
+			</ul>
+			<ul id="Menu-b">
+				<li><a class="Menu-b1" href="javascript:;"></a></li>
+				<li><a class="Menu-b2" href="javascript:;"></a></li>
+				<li><a class="Menu-b3" href="javascript:;"></a></li>
+				<li><a class="Menu-b4" href="javascript:;"></a></li>
+				<li><a class="Menu-b5" href="javascript:;"></a></li>
+			</ul>
+		</div>
+		<!--顶部菜单切换-->
+		<div id="Tmenu">
+			<ul class="clear">
+				<li class="active"><a href="javascript:;">1</a></li>
+				<li><a href="javascript:;">2</a></li>
+				<li><a href="javascript:;">3</a></li>
+				<li><a href="javascript:;">4</a></li>
+				<li><a href="javascript:;">5</a></li>
+			</ul>
+		</div>
+		<!--桌面图标-->
+		<div id="web_icon">
+			<div id="icon">
+				<ul>
+					<li class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="网络硬盘"/>
+							<i>
+								<input type="text" value="网络硬盘"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_2">
+						<a href="javascript:;">
+							<img src="image/icon/2.png" alt="搜搜地图"/>
+							<i>
+								<input type="text" value="搜搜地图"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_3">
+						<a href="javascript:;">
+							<img src="image/icon/3.png" alt="浏览网页"/>
+							<i>
+								<input type="text" value="浏览网页"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_4">
+						<a href="javascript:;">
+							<img src="image/icon/4.png" alt="qq阅读"/>
+							<i>
+								<input type="text" value="qq阅读"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_5">
+						<a href="javascript:;">
+							<img src="image/icon/5.png" alt="好友管理"/>
+							<i>
+								<input type="text" value="好友管理"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/27.png" alt="项目说明"/>
+							<i>
+								<input type="text" value="项目说明"/>
+							</i>
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/13.png" alt="豆瓣FM"/>
+							<i>
+								<input type="text" value="豆瓣FM"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_2">
+						<a href="javascript:;">
+							<img src="image/icon/14.png" alt="起点中文"/>
+							<i>
+								<input type="text" value="起点中文"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_3">
+						<a href="javascript:;">
+							<img src="image/icon/15.png" alt="快递查询"/>
+							<i>
+								<input type="text" value="快递查询"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_4">
+						<a href="javascript:;">
+							<img src="image/icon/17.png" alt="阅览天下"/>
+							<i>
+								<input type="text" value="阅览天下"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_5">
+						<a href="javascript:;">
+							<img src="image/icon/18.png" alt="乐视网"/>
+							<i>
+								<input type="text" value="乐视网"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/23.png" alt="芒果旅游"/>
+							<i>
+								<input type="text" value="芒果旅游"/>
+							</i>
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/24.png" alt="qq阅读"/>
+							<i>
+								<input type="text" value="qq阅读"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_2">
+						<a href="javascript:;">
+							<img src="image/icon/27.png" alt="腾讯视频"/>
+							<i>
+								<input type="text" value="腾讯视频"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_3">
+						<a href="javascript:;">
+							<img src="image/icon/10.png" alt="乐视网"/>
+							<i>
+								<input type="text" value="乐视网"/>
+							</i>
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li  class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="朋友网"/>
+							<i>
+								<input type="text" value="朋友网"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_2">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="3366"/>
+							<i>
+								<input type="text" value="3366"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_3">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="欢乐斗地主"/>
+							<i>
+								<input type="text" value="欢乐斗地主"/>
+							</i>
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li class="icon_1">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="qq宝贝"/>
+							<i>
+								<input type="text" value="qq宝贝"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_2">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="开心交友"/>
+							<i>
+								<input type="text" value="开心交友"/>
+							</i>
+						</a>
+					</li>
+					<li  class="icon_3">
+						<a href="javascript:;">
+							<img src="image/icon/1.png" alt="开开"/>
+							<i>
+								<input type="text" value="开开"/>
+							</i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--文件夹右键菜单-->
+		<div id="open_icon ">
+			<ul id ="open_right_icon">
+				<li><h2>打开</h2></li>
+				<li><h2>删除文件夹</h2></li>
+				<li><h2>重命名</h2></li>
+			</ul>
+		</div>
+		<!--桌面右键菜单-->
+		<div id="dblclick">
+			<ul id ="right_dbl">
+				<li><h2>查看<span></span></h2>
+					<ul>
+						<li><h2>小图标</h2></li>
+						<li class="checked"><h2>中等图标</h2></li>
+						<li><h2>大图标</h2></li>
+					</ul>
+				</li>
+				<li><h2>排序方式<span></span></h2>
+					<ul>
+						<li><h2>横向</h2></li>
+						<li class="checked"><h2>纵向</h2></li>
+						<li><h2>自由排列</h2></li>
+						<li><h2>显示桌面小工具</h2></li>
+					</ul>
+				</li>
+				<li><h2>刷新</h2></li>
+				<li><h2>文件上传</h2></li>
+				<li><h2>新建</h2></li>
+				<li><h2>个性化设置</h2></li>
+				<li><h2>便签</h2></li>
+				<li><h2>注销</h2></li>
+			</ul>
+		</div>
+		<!--上传-->
+		<div id="ftp">
+			<h2>上传预览</h2>
+			<span id="closeFtp"></span>
+			<div class="content_choice">
+				<div class="area">
+					<div class="fileInput">
+					<div id="upButton" class="upFileBtn">上传图片</div>
+					<input  multiple="multiple" size="30"  type="file" name="upfile" id="upfile" class="upfile"/>
+					</div>
+				</div>
+			 </div>
+			 <span id="fileDragArea" class="upload_drag_area">或者将文件拖到此处</span>
+			 <!--图片、文件放置区域-->
+			 <div id="content_area"><ul></ul></div>
+			<!--进度条-->
+			<ul id="pro_bar"></ul>
+			<!--上传图片信息栏-->
+			<div id="imgInfo">
+				<span class="finish"></span>
+			</div>
+			<input type="button" value="开始上传" id="upload">
+		</div>
+		<!--切换皮肤-->
+		<div id="skin">
+			<div id="title" class="title">
+				<h2>主题设置</h2>
+				<!--控制窗口变化按钮-->
+				<div id="closed">
+					<span id="close">
+						<i></i>
+						<i></i>
+					</span>
+				</div>
+			</div>
+			<div class="skin_content" id="skin_content">
+				<ul class="skin_ul clear" id="skin_img">
+					<li>
+						<img src="image/bgs/bg1.jpg" alt="" />
+						<p>温馨木纹</p>
+					</li>
+					<li>
+						<img src="image/bgs/bg2.jpg" alt="" />
+						<p>中秋节</p>
+					</li>
+					<li>
+						<img src="image/bgs/bg3.jpg" alt="" />
+						<p>七夕</p>
+					</li>
+					<li>
+						<img src="image/bgs/bg4.jpg" alt="" />
+						<p>幻彩蓝天</p>
+					</li>
+					<li>
+						<img src="image/bgs/bg5.jpg" alt="" />
+						<p>晴空行云</p>
+					</li>
+					<li>
+						<img src="image/bgs/bg6.jpg" alt="" />
+						<p>水墨年华</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--桌面便签-->
+		<div id="notepad">
+			<h2 id="note_title">
+				<span id="add">添加便签</span>
+			</h2>
+			<span id="closeNote"></span>
+			<ul id="list"></ul>
+			<div id="content">
+				<h2>
+				  <a id="del">删除</a>
+				  <a id="save">保存</a>         
+				</h2>
+				<textarea id="textarea"></textarea>
+			</div>
+		</div>
+<!--时钟-->
+		<div id="clock">
+			<div id="wrap">
+				<ul id="dail">
+				<!--	<li></li>-->
+				</ul>
+				<div id="hour"></div>
+				<div id="min"></div>
+				<div id="sec"></div>
+				<div id="ico"></div>
+			</div>
+		</div>
+	</body>
+</html>
