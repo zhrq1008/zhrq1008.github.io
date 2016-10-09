@@ -40,7 +40,7 @@ var skills = {
 		},
 		{
 			skillLanguage:"javascript",
-			percent:"80%",
+			percent:"75%",
 			skillTooltip:[
 				"了解数据类型、作用域闭包等语言特性",
 				"掌握定时器、数组字符串及递归、数组去重等",
@@ -52,11 +52,10 @@ var skills = {
 		},
 		{
 			skillLanguage:"canvas",
-			percent:"40%",
+			percent:"35%",
 			skillTooltip:[
 				"能熟练使用相关接口绘制各类图形",
 				"能运用canvas开发小游戏",
-				"可封装小型图表等数据可视化技术解决方案"
 			]
 		},
 		{

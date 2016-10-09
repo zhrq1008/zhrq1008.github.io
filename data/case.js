@@ -58,7 +58,7 @@ var casees = [
 					caseTitle:"图片擦擦",
 					publishTime:"2016-9-26 15:11",
 					caseThumbnail:"images/case/1/caca.gif",
-					caseDescription:"for循环，取模%判断方向，拼接字符串 ",
+					caseDescription:"for循环，拼接字符串 ",
 						caseWebsite:"zhrq1008.github.io/2if/caca/"
 				},
 				{
