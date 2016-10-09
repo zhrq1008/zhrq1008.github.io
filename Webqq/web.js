@@ -10,7 +10,6 @@ window.onload = function(){
 	var Wbg = document.getElementById('Wbg');
 	var bgimg = Wbg.getElementsByTagName('img')[0];//桌面背景图
 	var title = document.getElementById('title');
-	
 	as[0].onclick = function(){
 		skin.style.display = 'block';
 	}
@@ -22,10 +21,8 @@ window.onload = function(){
 			bgimg.src = this.src
 		}
 	}
-	dows(skin);
-	
+	dows(skin);//拖拽皮肤框
 /*----------------------登陆框-----------------------------*/
-	
 	var loading = document.getElementById('loading');
 	var login_top = document.getElementById('login_top');
 	var off = login_top.getElementsByTagName('span')[0]//关闭按钮
@@ -60,7 +57,6 @@ window.onload = function(){
 			land.style.display = 'none';
 		},100)
 	}
-	
 	//注册登陆窗口显示封装
 	function dlc(obj, height, result){
 		if(result){
@@ -98,9 +94,6 @@ window.onload = function(){
 			})
 		}
 	}
-	
-	
-	
 /*  -------------- 左侧导航模拟--   -------------------------*/
 	var Menu = document.getElementById('Menu_a');
 	var Menu_img = Menu.getElementsByTagName('img');
@@ -123,8 +116,6 @@ window.onload = function(){
 		};
 		return false;
 	}
-	
-	
 	/*---------------------桌面图标--------------------------------*/
 	var web_icon = document.getElementById('web_icon');//桌面图标
 	var icon = document.getElementById('icon');//桌面图标第一层icon
@@ -140,7 +131,6 @@ window.onload = function(){
  		Aul[i].style.left = i * wwidth + 'px';
  	}	
 	for(var i=0;i<Tli.length;i++){//选项卡式桌面焦点切换
-		
 		Tli[i].index = i;
 	 	Tli[i].onclick = function(){
 			for(var i=0;i<Tli.length;i++){
@@ -156,27 +146,22 @@ window.onload = function(){
 				}
 			});
 			num = this.index;
-			
 		};
-	
 	}
-	var open_icon = document.getElementById('open_icon')
-	/*----------图标右键-------------------*/
-	for(var i=0;i<liqq.length;i++){
-		liqq[i].oncontextmenu = function(ev){
-			
-			ev = ev||event;
-			var disx = ev.clientX;
-			var disy = ev.clienty;
-			open_right_icon.style.left = disx+'px' ;
-			open_right_icon.style.top = disy+'px';
-			open_icon.style.display = 'block';
-			dblclick.style.display = 'none';
-			return false;
-		}
-	}
-	
-	
+//	var open_icon = document.getElementById('open_icon')
+//	/*----------图标右键-------------------*/
+//	for(var i=0;i<liqq.length;i++){
+//		liqq[i].oncontextmenu = function(ev){
+//			ev = ev||event;
+//			var disx = ev.clientX;
+//			var disy = ev.clienty;
+//			open_right_icon.style.left = disx+'px' ;
+//			open_right_icon.style.top = disy+'px';
+//			open_icon.style.display = 'block';
+//			dblclick.style.display = 'none';
+//			return false;
+//		}
+//	}
 	//桌面图标滚轮事件
 	var btn = true;
 	if(document.addEventListener){
@@ -189,27 +174,21 @@ window.onload = function(){
 		{
 			//firefox
 			btn=ev.detail>0? true:false;
-			
 		}
 		else
 		{
 			//ie和chrome
 			btn=ev.wheelDelta<0? true:false;
 		}
-		
 		if(btn){//下
-			
 			num--
 			if(num<0){
 				num = Tli.length-1;
-				
-				
 			}
 		}else{
 			num++
 			if(num>Tli.length){
 				num = 0;
-				
 			}
 		}
 		for(var i=0;i<Tli.length;i++){//选项卡式桌面焦点切换
@@ -245,13 +224,17 @@ window.onload = function(){
 	var num1 = 160; //设置4个一列
 	var num2 = 117; //每个图标的坐标基数
 	var onOff = true; //默认是纵向菜单  判断排列方式
-	var popOnff = true; //用来控制弹出窗口事件的触发
+	//var popOnff = true; //用来控制弹出窗口事件的触发
 	var zyw = true; //用于控制图标的自由排列中运动位置
 	var menuOnff = true; //用于区分文件夹右键和系统右键
 	var arrRemove = []; //用于保存删除的文件夹的那个元素
+	var open_right = document.getElementById('open_right');//文件右键显示打开删除
+	var bli = open_right.getElementsByTagName('li')
+	var open_fist = open_right.children
 	//桌面（ul）中图标的排列
 	for(var i=0;i<Aul.length;i++){
-		show(Aul[i],onOff)
+		show(Aul[i],onOff);//图标位置生成函数调用
+		click(Aul[i]); //多次传参，便于获取每个ul下面的li
 	}
 	function show(Parent, onOff){
 		var arr = [];//保存桌面图标坐标
@@ -296,7 +279,7 @@ window.onload = function(){
 							fx: 'easeIn'
 						}
 					})
-					arr.push([num2*Math.floor(i/row),num2*(i%row)])
+					arr.push([num2*(i%row),num2*Math.floor(i/row)])
 				}
 				
 			}
@@ -444,24 +427,87 @@ window.onload = function(){
 			}
 		}
 	}
+	//窗口发生变化时候，改变图标排列位置
+	bin(window,'resize',function(){
+		if(onOff){
+			for(var i=0;i<Aul.length;i++){
+				show(Aul[i],onOff) //图标位置生成函数调用
+			}
+		}else{
+			for (i = 0; i < Aul.length; i++) {
+				show(Aul[i]); //图标位置生成函数调用
+			}
+		}
+	})
+	var right_dbl = document.getElementById('right_dbl');//系统右键
+	var pli = right_dbl.getElementsByTagName('li');
+/*---------------------文件右键操作----------------------------*/
+	function click(obj){
+		var lis = obj.getElementsByTagName('li');//获取ul下的所有li
+		var aInput = obj.getElementsByTagName('input'); //获取每个ul下面的li
+		for(var i=0;i<lis.length;i++){
+			lis[i].oncontextmenu= function(ev){
+				var self = this;
+				ev = ev||event;
+				var disx = ev.clientX;
+				var disy = ev.clientY;
+				
+				open_right.style.left = disx + 'px';
+				open_right.style.top = disy-100 + 'px';
+				open_right.style.display = 'block';//文件右键
+				right_dbl.style.display = 'none';//系统右键
+				ev.cancelBubble = true;
+				//打开应用
+				open_fist[0].onclick = function(){
+					
+				};
+				//删除
+				open_fist[1].onclick = function(){
+					obj.removeChild(self);
+					for(var i=0;i<lis.length;i++){
+					show(Aul[i],onOff);//图标位置生成函数调用	
+					}
+				};
+				//重命名
+				open_fist[2].onclick = function(){
+					aInput[self.index].focus();//设置焦点
+					aInput[self.index].select();//默认选中
+					document.onkeydown = function(ev){
+						ev = ev||event;
+						if(ev.keyCode == 13){
+							aInput[self.index].blur();//失去焦点
+						}
+					};
+					//失去焦点时候保存value值
+					aInput[self.index].onblur = function(){
+						
+					};
+				};
+				return false; //阻止浏览器右键的默认行为
+			}
+			
+		}
+	}
 	
-/*--------------------右键菜单显示------------------------*/
-	var open_right_icon = document.getElementById('open_right_icon');//文件夹右键菜单
-	var oli = open_right_icon.getElementsByTagName('li');
 	
+	
+	
+	
+	
+/*--------------------系统右键显示------------------------*/
+
 	var right_dbl = document.getElementById('right_dbl');//系统右键
 	var pli = right_dbl.getElementsByTagName('li');
 	
 	var changeimg = right_dbl.children[5];//右键切换背景图
 	changeimg.onclick = function(){
 		skin.style.display = 'block';
-	}
-	
-	
+	};
 	//自定义右键
 	document.onclick = function(){
-		right_dbl.style.display = 'none';
-	}
+		right_dbl.style.display = 'none';//系统右键
+		open_right.style.display = 'none';//文件右键
+	};
 	document.oncontextmenu = function(ev){
 		ev = ev||event;
 		var disx = ev.clientX;
@@ -470,16 +516,15 @@ window.onload = function(){
 		dblclick.style.left = disx + 'px';
 		dblclick.style.top = disy + 'px';
 		
-		open_right_icon.style.display = 'none';
+		open_right.style.display = 'none';
 		right_dbl.style.display = 'block';
-	
 
 		return false;//阻止默认行为
 		
-	}
+	};
 	//给右键下拉列表加class样式；
-	dbshow(oli);
-	dbshow(pli);
+	dbshow(bli);//文件右键下拉列表
+	dbshow(pli);//系统右键下拉列表
 	function dbshow(obj){
 		for(var i=0;i<obj.length;i++){
 			//给li加移入事件
@@ -501,47 +546,163 @@ window.onload = function(){
 			}
 		}
 	}
-	
-	/*---------------------时钟---------------------------*/
-	var clock = document.getElementById('clock');
-	var dail = document.getElementById('dail');
-	var hour = document.getElementById('hour');
-	var min = document.getElementById('min');
-	var sec = document.getElementById('sec');
-	var ico = document.getElementById('ico');
-	var str = '';
-	var Deg = 6;
-	for(var i=0;i<60;i++){
-		str += '<li style = transform:rotate('+Deg*i+'deg)><span><span></li>'
-	}
-	dail.innerHTML = str;
-	var spans = dail.getElementsByTagName('span');
-	console.log(spans.length);
-	for(var i=0;i<60;i++){
-		if(i%5==0){
-			spans[i].innerHTML = i/5;
+/*--右键切换大小------------------------------------------------------------*/
+	var lis = web_icon.getElementsByTagName('li');//获取桌面所有li
+	var rul = right_dbl.getElementsByTagName('ul')[0];//系统右键子ul查看
+	var rli = rul.getElementsByTagName('li');
+	var num3 = 0;
+	//----------切小图-------
+	rli[0].onclick = function(){
+		num1 = 133; //每个图标所占的真实位置  
+		num2 = 107; //每个图标的坐标基数
+		num3 = 1;
+		for (var i = 0; i < lis.length; i++) {
+			css(lis[i], '80px', '80px', '5px', '5px');
 		}
+		for (i = 0; i < Aul.length; i++) {
+			show(Aul[i],onOff) //图标位置生成函数调用
+		}
+		open_right.style.display = 'none'; //隐藏右键菜单
 	}
-	tim();
-	setInterval(function(){
-		tim();
-	},1000)
+	
+	//----------切中等图-------
+	rli[1].onclick = function(){
+		num1 = 165; //每个图标所占的真实位置  
+		num2 = 117; //每个图标的坐标基数
+		num3 = 2;
+		for (var i = 0; i < lis.length; i++) {
+			css(lis[i], '90px', '90px', '0px', '5px');
+		}
+		for (i = 0; i < Aul.length; i++) {
+			show(Aul[i],onOff) //图标位置生成函数调用
+		}
+		open_right.style.display = 'none'; //隐藏右键菜单
+	}
+	//----------切大图-------
+	rli[2].onclick = function(){
+		num1 = 230; //每个图标所占的真实位置  
+		num2 = 127; //每个图标的坐标基数
+		num3 = 3;
+		for (var i = 0; i < lis.length; i++) {
+			css(lis[i], '100px', '100px', '0px', '15px');
+		}
+		for (i = 0; i < Aul.length; i++) {
+			show(Aul[i],onOff) //图标位置生成函数调用
+		}
+		open_right.style.display = 'none'; //隐藏右键菜单
+	}
+	//图标样式切换函数封装
+	function css(obj, s1, s2, s3, s4) {
 
-	function tim(){
-		var date = new Date();
-		var s = date.getSeconds();
-		var m = date.getMinutes()+s/60;
-		var	h = date.getHours()+m/60;
-		sec.style.transform ='rotate('+s*6+'deg)'
-		min.style.transform ='rotate('+m*6+'deg)'
-		hour.style.transform ='rotate('+h*30+'deg)'	
+		obj.style.width = s1;
+		obj.style.height = s2;
+		obj.style.paddingBottom = s3;
+		obj.style.paddingTop = s4;
+
+	}
+	//排列图标
+	var pul = right_dbl.getElementsByTagName('ul')[1];
+	var pli = pul.getElementsByTagName('li');
+	//纵向排列
+	pli[1].onclick = function(){
+		onOff = false;
+		zyw = true; //允许图标拖拽运动到原来位置
+		for (i = 0; i < Aul.length; i++) {
+			show(Aul[i]) //图标位置生成函数调用
+		}
+	};
+	//横向排列
+	pli[0].onclick = function(){
+		onOff = true;
+		zyw = true; //允许图标拖拽运动到原来位置
+		for (i = 0; i < Aul.length; i++) {
+			show(Aul[i],onOff) //图标位置生成函数调用
+		}
+	};
+	//自由排列
+	pli[2].onclick = function(){
+		zyw = false; //允许图标拖拽运动到原来位置
+		
+	};
+	/*--------右键新建功能-------------------*/
+	var creat_li = right_dbl.children[4];
+	
+	
+	creat_li.onclick = function(){
+		createLi(true,num); //右键创建文件夹
+	}
+	function createLi(iscreat,createIndex){
+		if(iscreat){
+			var li = document.createElement('li')
+			li.innerHTML = '<a href="javascript:;"><img src="image/icon/27.png" alt="作品"/><i><input placeholder="新建文件夹" type="text" value="新建文件夹"/></i></a>';
+			Aul[createIndex].appendChild(li);
+		}
+		if (li) {
+			switch (num3) {
+			case 1:
+				css(li, '70px', '70px', '10px', '5px');
+				break;
+			case 2:
+				css(li, '90px', '90px', '0px', '5px');
+				break;
+			case 3:
+				css(li, '110px', '110px', '0px', '15px');
+				break;
+			default:
+				css(li, '90px', '90px', '0px', '5px');
+			}
+		}
+		for (var i = 0; i < Aul.length; i++){
+			
+			click(Aul[i]);//点击调用
+			show(Aul[i],onOff); //图标位置生成函数调用
+		}
 		
 	}
+	/*---------------------时钟---------------------------*/
+		var bg = document.getElementById('bg')
+		
+		var wrap = document.getElementById('wrap');
+		var lists = document.getElementById('lists');
+		var h = document.getElementById('hour');
+		var minu = document.getElementById('min');
+		var sec = document.getElementById('sec');
+		var str = "";
+		for(var i = 0;i<60;i++){
+			str += '<li style= transform:rotate('+i*6+'deg)><span></span></li>';
+		}
+		lists.innerHTML = str;
+//		var spans = document.getElementsByTagName('span');
+//		console.log(spans.length)
+//		for(var i = 0;i<60;i++){
+//			if(i%5 == 0){
+//				//console.log(lis[i])
+//				spans[i].innerHTML = i/5;
+//			}
+//		}
+		time();
+		setInterval(function(){
+			time();
+		},1000)
+		function time(){
+			//获取本机时间
+			var date = new Date();
+			//获取秒数
+			var second = date.getSeconds();
+			//获取分钟
+			var min = date.getMinutes()+second/60;
+			//获取小时
+			var hour =date.getHours()+min/60;
+			//秒数的针数
+			sec.style.transform = 'rotate('+second*6+'deg)';
+			//分钟的针数
+			minu.style.transform = 'rotate('+min*6+'deg)';
+			//小时的时针
+			h.style.transform = 'rotate('+hour*30+'deg)';
+		}
 
 	
-
-	
-	dows(clock);
+	dows(bg);
 	
 	
 	function dows(obj){
@@ -597,6 +758,19 @@ window.onload = function(){
 		}
 	}
 
+	//绑定事件函数封装
+	function bin(obj,eventType,fn){
+		if(obj.addEventListener){
+			obj.addEventListener(eventType,function(){
+				fn.call(this);
+			},false)
+		}else{
+			obj.attachEvent('on'+eventType,function(){
+				fn.call(this);
+			})
+		}
+	}
+	
 	
 	
 }
