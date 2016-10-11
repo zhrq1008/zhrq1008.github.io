@@ -506,7 +506,7 @@ window.onload = function(){
 			var inp = obj.getElementsByTagName('input'); //获取li下面的input标签
 
 		 url = [
-				['http://pan.baidu.com/', 'http://map.qq.com/', 'http://www.kuaipan.cn/', 'http://qqreader.qq.com/', 'http://reader.qq.com/cgi-bin/loginpage', 'http://zhrq1008.github.io/Webqq/jianjie/'],
+				['http://pan.baidu.com/', 'http://map.qq.com/', 'http://www.kuaipan.cn/', 'http://qqreader.qq.com/', 'http://reader.qq.com/cgi-bin/loginpage', 'https://zhrq1008.github.io/zhrq1008.github.io/Webqq/jianjie/'],
 				['http://douban.fm/partner/qq_plus', 'http://webqq.qidian.com', 'http://www.kuaidi100.com/ad/head_ad.html', 'http://www.dooland.com/', 'http://www.le.com/', 'http://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
 				['http://qqreader.qq.com/', 'http://v.qq.com/', 'http://www.le.com/'],
 				['http://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'http://www.3366.com/', 'http://web.3366.com/ddz/'],
