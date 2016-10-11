@@ -10,9 +10,74 @@ window.onload = function(){
 	var Wbg = document.getElementById('Wbg');
 	var bgimg = Wbg.getElementsByTagName('img')[0];//桌面背景图
 	var title = document.getElementById('title');
-	as[0].onclick = function(){
-		skin.style.display = 'block';
+	var pf_box = document.getElementById('pf_box')//背景选择
+	var sq  = document.getElementById('sq')//收起
+	
+	as[0].onclick = function(ev){
+		MT(pf_box,{
+			'height': {
+				target: 246,
+				duration: 500,
+				fx: 'linear'
+			},
+			'opacity':{
+				target:100,
+				duration:500,
+				fx:'linear'
+			}
+		})
+		ev.cancelBubble = true; //阻止事件冒泡 防止在菜单未打开之前触发document的点击事件	
 	}
+	//收起更换皮肤
+	sq.onclick = function(){
+		MT(pf_box,{
+			'height': {
+				target: 0,
+				duration: 500,
+				fx: 'linear'
+			},
+			'opacity':{
+				target:0,
+				duration:500,
+				fx:'linear'
+			}
+		})
+	}
+	//更换不同风格皮肤
+	var zt = document.getElementById('zt');
+	var azt = zt.getElementsByTagName('a');
+	var bg_yl = document.getElementById('bg_yl');//预览图片背景图
+	var bg_con = document.getElementById('bg_con');//
+	var tul = bg_con.getElementsByTagName('ul');
+	for(var i=0;i<azt.length;i++){
+		azt[i].index = i;
+		azt[i].onclick = function(){
+			for(var i=0;i<azt.length;i++){
+				azt[i].className = '';
+				tul[i].className = '';
+			}
+			this.className = 'active'; //添加当前的
+			tul[this.index].className = 'onOff';
+		}
+	}
+	for(var i=0;i<tul.length;i++){
+		src(tul[i]);
+	}
+	//更换src
+	function src(obj){
+		var imgs = obj.getElementsByTagName('img');
+		for(var i=0;i<imgs.length;i++){
+			
+			imgs[i].onclick = function(){
+				var str = this.src.match(/\/(\w+\.(?:png|jpg|gif|bmp))$/i)[1]
+				bgimg.src = 'image/bgs/' + str + '';
+			}
+			imgs[i].onmouseover = function(){
+				bg_yl.style.background = 'url('+this.src+')';
+			}
+		}
+	}
+//关闭窗口
 	closed.onclick = function(){
 		skin.style.display = 'none';
 	}
@@ -125,7 +190,7 @@ window.onload = function(){
 	var Tli = Tmenu.getElementsByTagName('li');//获取焦点下li
 	var wwidth = document.documentElement.clientWidth
 	var  num = 0;
-//	console.log(liqq)
+
 //切换桌面图标一组ul；
 	for(var i=0;i<Aul.length;i++){
  		Aul[i].style.left = i * wwidth + 'px';
@@ -148,20 +213,6 @@ window.onload = function(){
 			num = this.index;
 		};
 	}
-//	var open_icon = document.getElementById('open_icon')
-//	/*----------图标右键-------------------*/
-//	for(var i=0;i<liqq.length;i++){
-//		liqq[i].oncontextmenu = function(ev){
-//			ev = ev||event;
-//			var disx = ev.clientX;
-//			var disy = ev.clienty;
-//			open_right_icon.style.left = disx+'px' ;
-//			open_right_icon.style.top = disy+'px';
-//			open_icon.style.display = 'block';
-//			dblclick.style.display = 'none';
-//			return false;
-//		}
-//	}
 	//桌面图标滚轮事件
 	var btn = true;
 	if(document.addEventListener){
@@ -235,6 +286,7 @@ window.onload = function(){
 	for(var i=0;i<Aul.length;i++){
 		show(Aul[i],onOff);//图标位置生成函数调用
 		click(Aul[i]); //多次传参，便于获取每个ul下面的li
+		caozuo(Aul[i],i)
 	}
 	function show(Parent, onOff){
 		var arr = [];//保存桌面图标坐标
@@ -427,6 +479,8 @@ window.onload = function(){
 			}
 		}
 	}
+	
+	
 	//窗口发生变化时候，改变图标排列位置
 	bin(window,'resize',function(){
 		if(onOff){
@@ -439,6 +493,49 @@ window.onload = function(){
 			}
 		}
 	})
+
+//	/*-------------桌面图标操作-------------------*/
+
+	function caozuo(obj,Uindex,isLeft){
+		var url;
+		if (isLeft) {
+			url = [
+				['http://web.qq.com/module/appmarket/appmarket.html', 'http://www.weiyun.com/index.html', 'http://mail.qq.com/cgi-bin/login', 'http://www.qq.com/', 'https://mail.qq.com/cgi-bin/loginpage', 'http://dev.t.qq.com/']
+			];
+		} else {
+			var inp = obj.getElementsByTagName('input'); //获取li下面的input标签
+
+		 url = [
+				['http://pan.baidu.com/', 'http://map.qq.com/', 'http://www.kuaipan.cn/', 'http://qqreader.qq.com/', 'http://reader.qq.com/cgi-bin/loginpage', 'http://zhrq1008.github.io/Webqq/jianjie/'],
+				['http://douban.fm/partner/qq_plus', 'http://webqq.qidian.com', 'http://www.kuaidi100.com/ad/head_ad.html', 'http://www.dooland.com/', 'http://www.le.com/', 'http://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
+				['http://qqreader.qq.com/', 'http://v.qq.com/', 'http://www.le.com/'],
+				['http://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'http://www.3366.com/', 'http://web.3366.com/ddz/'],
+				['http://baobei.qq.com/', 'http://www.zhenai.com/901004_924817.html?planid=7620358&groupid=133239289&ctvid=6239592922&kwid=19421816347&domain=&keyword=开心交友网&kwmatch=e&plan=enc_0e0c1d3dbbdbf57a0dfd8bf59335&group=enc_d656f58fdc1d3dbbdb8776&network=1', '']
+			]
+		}
+		var lis = obj.getElementsByTagName('li');
+		for(var i=0;i<lis.length;i++){
+			lis[i].index = i;
+			lis[i].onclick = function(){
+				win_open();
+//				if(isLeft){
+//					popUp(this,url[Uindex][this.index], isLeft); //弹窗
+//				} else {
+//						console.log(this, this.index, inp[this.index], url[Uindex][this.index])
+						popUp(this,url[Uindex][this.index]); //弹窗
+//				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	var right_dbl = document.getElementById('right_dbl');//系统右键
 	var pli = right_dbl.getElementsByTagName('li');
 /*---------------------文件右键操作----------------------------*/
@@ -488,12 +585,60 @@ window.onload = function(){
 			
 		}
 	}
-	
-	
-	
-	
-	
-	
+	/*--------------------弹出窗口操作---------------------------------*/	
+	var win_mask = document.getElementById('win_mask'); //弹出窗口
+	var w_h2 = win_mask.getElementsByTagName('h2')[0]; //弹出窗口h2
+	var con_cover = document.getElementById('con_cover'); //iframe遮罩层
+	var iframe = win_mask.getElementsByTagName('iframe')[0] //获取iframe
+	var ctrl_btn = win_mask.getElementsByTagName('a');
+	var min_menu_bg = document.getElementById('min_menu_bg') //弹窗最小化后图标
+//	var h2 = min_menu_bg.getElementsByTagName('h2')[0];
+
+	//弹出窗口设置默认值
+		var json = {
+			W: 800,
+			H: 500,
+			O: 100,
+			L: 0,
+			T: 0
+		}
+//弹出窗口出现的位置
+	function win_open(){
+		win_mask.className = 'show';
+		win_mask.style.width = json.W + 'px'; //恢复默认left值
+		win_mask.style.height = json.H + 'px'; //恢复默认高度
+		win_mask.style.opacity = json.O; //恢复默认透明度
+		win_mask.style.filter = 'apha(opacity:' + json.O + ')'; //恢复默认透明度
+
+		clientW = document.documentElement.clientWidth;
+		clientH = document.documentElement.clientHeight;
+		//弹出窗口出现在桌面的中央位置
+		var _left = Math.floor((clientW - win_mask.offsetWidth) / 2);
+		var _top = Math.floor((clientH - win_mask.offsetHeight) / 2);
+		json.L = _left;
+		json.T = _top;
+
+		win_mask.style.left = json.L + 'px';
+		win_mask.style.top = json.T + 'px';
+
+	}
+
+	function popUp(_this,src, isLeft) {
+			//切换弹出窗口标题
+			if (isLeft) {
+				//w_h2.innerHTML = val;
+				//添加桌面图标对应内容
+				iframe.src = src;
+				//折叠任务栏标题
+				//valT = val;
+			} else {
+				//w_h2.innerHTML = val.value;
+				//添加桌面图标对应内容
+				iframe.src = src;
+				//折叠任务栏标题
+				//valT = val.value;
+			}
+	}
 /*--------------------系统右键显示------------------------*/
 
 	var right_dbl = document.getElementById('right_dbl');//系统右键
@@ -546,7 +691,7 @@ window.onload = function(){
 			}
 		}
 	}
-/*--右键切换大小------------------------------------------------------------*/
+/*----------------------右键切换大小-------------------------------------------*/
 	var lis = web_icon.getElementsByTagName('li');//获取桌面所有li
 	var rul = right_dbl.getElementsByTagName('ul')[0];//系统右键子ul查看
 	var rli = rul.getElementsByTagName('li');
@@ -601,7 +746,7 @@ window.onload = function(){
 
 	}
 	//排列图标
-	var pul = right_dbl.getElementsByTagName('ul')[1];
+	var pul = right_dbl.getElementsByTagName('ul')[1];//右键排列按钮
 	var pli = pul.getElementsByTagName('li');
 	//纵向排列
 	pli[1].onclick = function(){
@@ -625,9 +770,7 @@ window.onload = function(){
 		
 	};
 	/*--------右键新建功能-------------------*/
-	var creat_li = right_dbl.children[4];
-	
-	
+	var creat_li = right_dbl.children[4];//新建按钮
 	creat_li.onclick = function(){
 		createLi(true,num); //右键创建文件夹
 	}

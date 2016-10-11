@@ -1,0 +1,130 @@
+<html lang="en">
+	<head>
+		
+		<meta charset="UTF-8">
+	
+		<title>功能简介</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<style>
+			body,h3,li,p,ul {
+				margin: 0;
+				padding: 0;
+				font-size: 14px;
+				list-style: none
+			}
+
+			.readme {
+				width: 846px;
+				margin: 20px auto;
+				padding-top:20px;
+				overflow: hidden;
+				background-color:#fff;
+			}
+
+			div {
+				padding-left: 10px
+			}
+
+			div p {
+				text-indent: 10px;
+				line-height: 30px;
+				font-size: 20px
+			}
+
+			span {
+				padding:0 20px;
+				font-size: 24px
+			}
+
+			ul {
+				margin-top: 25px
+			}
+
+			li {
+				height:30px;
+				line-height: 30px;
+				padding-left: 15px;
+				width: 1200px
+			}
+		</style>
+	</head>
+	<body>
+	<div class="readme">
+	<div>
+		<p>
+			姓名：<span>张瑞谦</span>
+		</p>
+		<p>
+			手机：<span>1503282971</span>
+		</p>
+		<p>
+			Email：<span>251869414@qq.com</span>
+		</p>
+		<p>
+			QQ：<span>251869414</span>
+		</p>
+		<p>
+			温馨提示：时间仓促，如有Bug，纯属正常<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请使用谷歌浏览器浏览.
+		</p>
+	</div>
+	<ul>
+		<li>web QQ借鉴腾讯WebQQ（http://web.qq.com/）</li>
+		<li>使用原生javascript进行开发</li>
+		<li>
+		<h3>1.桌面图标功能</h3>
+		</li>
+		<li>（1）点击桌面图标可以出现对应的弹出窗口。</li>
+		<li>（2）桌面图标可以自由拖动，拖动到一定位置处可以匀速运动会原位置。</li>
+		<li>（3）桌面图标可以根据可视区的大小进行排列，运动window.onresize事件。</li>
+		<li>（4）桌面图标可以互换位置，当有多个图标发生位置重合时，与重合面积最大的交换位置。</li>
+		<li>（5）左边菜单模拟苹果导航效果，侧边栏上面的图标点击也可以出现对应的弹出窗口。</li>
+		<li>
+		<h3>2.弹出窗口和折叠菜单</h3>
+		</li>
+		<li>（1）点击图标出现弹出窗口，弹出窗口可以任意拖拽，但是限定范围（不能向上超出可视区）。</li>
+		<li>（2）弹出窗口可以最大化，最小化，关闭。</li>
+		<li>（3）点击最小化后出现折叠任务菜单，鼠标滑到上面可以继续选择还原或者关闭。</li>
+		<li>
+		<h3>3.顶部菜单</h3>
+		</li>
+		<li>（1）换肤功能：实现了可以预览，选择皮肤，点击即可切换页面背景。</li>
+		<!--<li>（2）注册功能：用户名为个人手机号，验证方式采用正则表达式，用户名只能为有效的大陆手机号，密码为6-12</li>
+		<li>&nbsp;&nbsp;&nbsp;且为数字、字母或者它们的组合，还可以选择性别</li>
+		<li>&nbsp;&nbsp;&nbsp;如果注册信息错误，会出现红色提示文字输入框页显示红色，存储方式为HTML5 本地存储locaStorage</li>
+		<li>（3）登陆功能：获取输入的手机号和密码，与之前存储的进行对比，一样则登陆成功，否则提示用户名或密码错误</li>
+		<li>&nbsp;&nbsp;&nbsp;如果用户名不存在则提示请注册</li>
+		<li>（4）登陆成功时：在桌面顶部左边会出先一个用户登陆成功状态的一个展现，头像可以分辨用户群体，可以选择修改密码，注销登陆</li>
+		<li>（5）修改密码：通过跟存储的数据进行比对如果密码重复则提示密码错误</li>
+		<li>&nbsp;&nbsp;&nbsp;如果密码为6-12且符合规则，则提示密码修改成功</li>
+		<li>（6）天气功能：通过ajax跨域请求天气数据，可以显示当前城市天气指数和未来两天的天气，还可以切换城市</li>
+		<li>&nbsp;&nbsp;&nbsp;通过联动菜单选择对应的城市，运用HTML5本地存储，页面刷新不会发生更改</li>-->
+		<li>
+		<h3>4.切换桌面</h3>
+		</li>
+		<li>点击焦点数字切花桌面。</li>
+		<li>
+		<h3>5.系统右键功能</h3>
+		</li>
+		<li>（1）用document.oncontextmenu事件自定义右键功能。</li>
+		<li>（2）查看：可以查看小图标、中等图标和大图标，默认是中等图标。</li>
+		<li>（3）排列方式：可以设置为横向、纵向、自由排列。</li>
+		<li>（6）新建文件夹：可以根据所在桌面创建文件夹。</li>
+		<li>（7）个性化设置：可以自定义主题。</li>
+		
+		<li>
+		<h3>6.文件夹右键功能</h3>
+		<li>（1）打开：右键点击打开弹出对应的应用窗口。</li>
+		<li>（2）删除文件夹：删除后剩余的文件夹位置会自动重新排列。</li>
+		<li>&nbsp;&nbsp;&nbsp;等页面在刷新的时候会恢复删除后的文件夹。</li>
+		<li>（3）重命名：右键重命名.</li>
+		<li>&nbsp;&nbsp;&nbsp;a:会将当前文件夹的文件名默认选中，可以更改文件名，更改后会对文件名。</li>
+		<!--<li>&nbsp;&nbsp;&nbsp;b:如果后来更改并且删除，再次载入时会显示最后更改的文件名。</li>-->
+		<h3>7.时钟：</h3>
+		</li>
+		<li>通过css绘制时钟，并且根据时间对象获取当前时间，可以在有效的范围内自由拖动。</li>
+	</ul>
+</div>
+	</body>
+</html>
