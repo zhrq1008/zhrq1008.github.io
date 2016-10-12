@@ -15,7 +15,7 @@
 var projects = [
 		{
 			projectName:"webqq",
-			projectWebsite:"zhrq1008.github.io/Webqq",
+			projectWebsite:"https://zhrq10.github.io/",
 		    startTime:"2016.09.12",
 			endTime:"至今",
 			projectExplain:"使用原生javascript进行开发，顶部菜单功能、桌面图标、桌面切换、系统右键功能、文件右键功能、时钟css3实现。",
