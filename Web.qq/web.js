@@ -662,17 +662,17 @@ window.onload = function(){
 		var url;
 		if (isLeft) {
 			url = [
-				['http://web.qq.com/module/appmarket/appmarket.html', 'http://www.weiyun.com/index.html', 'http://mail.qq.com/cgi-bin/login', 'http://www.qq.com/', 'https://mail.qq.com/cgi-bin/loginpage', 'http://dev.t.qq.com/']
+				['https://web.qq.com/module/appmarket/appmarket.html', 'https://www.weiyun.com/index.html', 'https://mail.qq.com/cgi-bin/login', 'https://www.qq.com/', 'https://mail.qq.com/cgi-bin/loginpage', 'httpss://dev.t.qq.com/']
 			];
 		} else {
 			var inp = obj.getElementsByTagName('input'); //获取li下面的input标签
 
 		 url = [
-				['http://pan.baidu.com/', 'http://map.qq.com/', 'http://www.kuaipan.cn/', 'http://qqreader.qq.com/', 'http://reader.qq.com/cgi-bin/loginpage', 'https://zhrq1008.github.io/zhrq1008.github.io/Webqq/jianjie/'],
-				['http://douban.fm/partner/qq_plus', 'http://webqq.qidian.com', 'http://www.kuaidi100.com/ad/head_ad.html', 'http://www.dooland.com/', 'http://www.le.com/', 'http://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
-				['http://qqreader.qq.com/', 'http://v.qq.com/', 'http://www.le.com/'],
-				['http://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'http://www.3366.com/', 'http://web.3366.com/ddz/'],
-				['http://baobei.qq.com/', 'http://www.zhenai.com/901004_924817.html?planid=7620358&groupid=133239289&ctvid=6239592922&kwid=19421816347&domain=&keyword=开心交友网&kwmatch=e&plan=enc_0e0c1d3dbbdbf57a0dfd8bf59335&group=enc_d656f58fdc1d3dbbdb8776&network=1', '']
+				['https://pan.baidu.com/', 'https://map.qq.com/', 'https://www.kuaipan.cn/', 'https://qqreader.qq.com/', 'https://reader.qq.com/cgi-bin/loginpage', 'https://zhrq1008.github.io/Webqq/jianjie/'],
+				['https://douban.fm/partner/qq_plus', 'https://webqq.qidian.com', 'https://www.kuaidi100.com/ad/head_ad.html', 'https://www.dooland.com/', 'https://www.le.com/', 'https://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
+				['https://qqreader.qq.com/', 'https://v.qq.com/', 'https://www.le.com/'],
+				['https://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'https://www.3366.com/', 'https://web.3366.com/ddz/'],
+				['https://baobei.qq.com/', 'https://www.zhenai.com/901004_924817.html?planid=7620358&groupid=133239289&ctvid=6239592922&kwid=19421816347&domain=&keyword=开心交友网&kwmatch=e&plan=enc_0e0c1d3dbbdbf57a0dfd8bf59335&group=enc_d656f58fdc1d3dbbdb8776&network=1', '']
 			]
 		}
 		var lis = obj.getElementsByTagName('li');
