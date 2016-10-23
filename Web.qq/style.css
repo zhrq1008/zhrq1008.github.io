@@ -1,0 +1,1001 @@
+
+/*---------------------------- 顶部按钮------------------------------*/
+ html,body{
+	position: relative;	
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#nav{
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 4;
+	width: 100%;
+	height: 30px;
+	background: rgba(0,4,0,0.2);
+}
+#topNav{
+	height: 30px
+	width: 244px;
+	position: absolute;
+	top: 0;
+	right: 30px;
+}
+#topNav span{
+	color: #CCCCCC;
+	line-height: 30px;
+	vertical-align:top;
+}
+#topNav a{
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+}
+#topNav a:hover{
+	color: red;
+}
+/*---顶部主题皮肤切换------------------------------------*/
+
+#web_pf{
+	position: absolute;
+	top: 30px;
+	left: 0;
+	z-index: 0;
+	overflow:hidden;
+	width: 100%;
+	height: 100%;
+	background: -red;
+	}
+#web_pf .pf{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	}
+#web_pf img{
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	}
+/*隐藏皮肤*/
+#pf_box{
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 5;
+	overflow: hidden;
+	width: 100%;
+	height: 0px;
+	background: pink;
+	opacity: 0;
+	/*filter: apha(opacity:0);*/
+	}
+.top_menu{
+	position: relative;
+	margin: 0 auto;
+	width: 960px;
+	height: 30px;
+	}
+	/*-----卡通明星简约* -----*/
+.zi_menu li{
+	float: left;
+	margin: 0 4px;
+	}
+.zi_menu li a{
+	display: inline-block;
+	width: 58px;
+	height: 30px;
+	color: #000;
+	text-align: center;
+	font-size: 14px;
+	line-height: 30px;
+	}
+.zi_menu li.first{
+	margin-left: 0;
+	}
+.zi_menu li a.active{
+	background: #389cff;
+	color: #fff;
+	}
+.top_menu .sq{
+	position: absolute;
+	top: 5px;
+	right: 0;
+	padding-left: 18px;
+	background: url(image/up.png) no-repeat left center;
+	}
+.xian{
+	width: 100%;
+	height: 1px;
+	background: #000;
+	}
+/*隐藏背景*/
+.pf_bg{
+	margin: 16px auto;
+	width: 960px;
+	height: 300px;
+	}
+.pf_bg .bg_con,.bg_con ul{
+	float: left;
+	width:590px;
+	height: 190px;
+	}
+.bg_con ul{
+	display: none;
+	}
+.bg_con ul.onOff{
+	display: block;
+	}
+.bg_con ul li{
+	float: left;
+	}
+.bg_con ul li img.big{
+	float: left;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	width: 195px;
+	height: 119px;
+	cursor: pointer;
+	}
+.bg_con ul li img{
+	float: left;
+	margin-right: 1px;margin-bottom: 1px;
+	width: 97px;
+	height: 59px;cursor: pointer;
+	}
+.bg_con ul li img.last{
+	position: relative;
+	top: -60px;
+	}
+#bg_yl{
+	float: right;
+	width: 369px;
+	height: 180px;
+	background: url(image/bgs/40.jpg);
+	}
+
+
+/*---------------------------登陆----------------*/
+#loading{
+	opacity: 1;
+	left:0;
+	top:0;
+	position: absolute;
+	z-index: 21;
+	background: url(image/bgs/bg3.jpg);
+	width: 400px;
+	height: 460px;
+	box-shadow: inset 0 0 4px 4px blue; 
+	display: none;
+}
+.top,.l-top{
+	position: relative;
+	height: 60px;
+	border-bottom: 2px solid red;
+	background: url(image/bgs/bg3.jpg) ;
+}
+.top span,.l-top span{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	-webkit-transition: .5s;
+}	
+.win_control span i:nth-of-type(1),.win_control span i:nth-of-type(2),.top span i:nth-of-type(1),.top span i:nth-of-type(2),.l-top span i:nth-of-type(1),.l-top span i:nth-of-type(2){
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	display: inline-block;
+	height: 4px;
+	width: 18px;
+	background: black;
+	transform: rotate(45deg);
+	border-radius: 2px;
+	
+}
+.win_control span i:nth-of-type(2),.top span i:nth-of-type(2),.l-top span i:nth-of-type(2){
+	
+	transform: rotate(-45deg);
+	
+}
+
+.win_control span:hover,.l-top span:hover,.top span:hover{
+	transform: rotateZ(180deg);
+	
+}
+
+.info{
+	position: relative;
+	padding: 30px 40px;
+}
+.info div{
+	line-height: 40px;
+	height: 40px;
+	margin-bottom: 40px;
+}
+.info form{
+	display: block;
+}
+.info div input{
+	border-bottom: 1px solid #000;
+	line-height: 40px;
+	height: 40px;
+	width: 250px;
+}
+.info p{
+	padding:12px 46px;
+	height: 14px;
+	line-height: 14px;
+}
+.info p input{
+	vertical-align: middle;
+	width: 15px;
+	height: 15px;
+}
+.info a{
+	position: absolute;
+	right: 50px;
+	bottom: 75px;
+	font-weight: bold;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	padding-top: 5px;
+}
+#log{
+	margin: 22px 50px 10px;
+	width: 250px;
+	height: 35px;
+	background: orange;
+	font-size: 16px;
+	font-weight: bold;
+	border: 0;
+	
+}
+#log:hover{
+	background: red;
+	transition: background-color 0.5s linear;
+}
+/*-----------------------------注册--------------*/
+#land{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	display: none;
+	overflow: hidden;
+	width: 400px;
+	height: 430px;
+	background: #f4f4f4;
+	opacity: 0;
+	background: url(image/bgs/bg3.jpg) ;
+	}
+.land_con{
+	margin-top: 40px;
+	
+}
+.land_con li{
+	margin-bottom: 12px;
+	height: 56px;
+	line-height: 36px;
+	margin-left: 22px;
+}
+.name1{
+	font-size: 14px;
+	font-weight: bold;
+}
+.name2{
+	font-size: 14px;
+	margin-left: 76px;
+	display: block;
+}
+
+.land_con .sex{
+	margin-left: 53px;
+}
+.zhr{
+	margin-left: 46px;
+	width: 260px;
+	height: 40px;
+	background: orange;
+}
+.zhr:hover{
+	background: red;
+	transition: 1s;
+}
+.xinxi{
+	height: 30px;
+	border-bottom: 1px solid black;
+}
+/*-----在线-------*/
+#qq{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 118px;
+	z-index: 13;
+	width: 156px;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+}
+.qqtou{
+	float: left;
+	width: 25px;
+	height: 36px;
+}
+#qq span{
+	display: inline-block;
+	padding-left: 14px;
+}
+#qq span a{
+	color: white;
+}
+#yonghu{
+	width: 100px;
+	height: 30px;
+	overflow: hidden;
+	background: pink;
+	display: none;
+}
+#qq .nouse{
+	display: inline-block;
+	margin-left: 5px;
+	padding-left: 8px;
+	width: 92px;
+	background: #F9F9F9;
+}
+#yonghu li{
+	
+}
+#yonghu a{
+	display: inline-block;
+}
+#yonghu li:hover{
+	background: #ccc;
+	color: #fff;
+}
+.sjx{
+	position: absolute;
+	top: -2px;
+	right: 30px;
+}
+
+
+
+
+
+
+
+
+/* ---------------------桌面背景----------------------*/
+#Wbg{
+	position:absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+#Wbg img{
+	/*z-index: 0;*/
+	position: absolute;
+	top:0;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	
+}
+/* -------------------------------左侧菜单栏---------------------------------------*/
+#Menu{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: 1;
+	margin-top: -288px;
+	width: 73px;
+	height: 576px;
+	background: url(image/left/mian_menu_bg.png)no-repeat;
+}
+#Menu_a{
+	margin-left: 2px;
+	width: 58px;
+}
+#Menu_a li{
+	margin-top: 8px;
+	width: 58px;
+	height: 60px;
+}
+#Menu_a li a{
+	display: block;
+	padding: 14px;
+}
+#Menu_a li img{
+	width: 35px;
+	height: 35px;
+	}
+#Menu-b{
+	margin: 50px 6px 0;
+	width: 58px;	
+}
+#Menu-b li{
+	float: left;
+	padding: 4px 4px 8px 4px;
+	width: 20px;
+	height: 20px;
+}
+#Menu-b li a{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-image: url(image/webqq_icon.png);
+	background-repeat: no-repeat;
+}
+#Menu-b .Menu-b1{
+	background-position: -80px -108px;
+}
+#Menu-b .Menu-b2{
+	background-position: 0px -108px;
+}
+#Menu-b .Menu-b3{
+	background-position: -59px -108px;
+}
+#Menu-b .Menu-b4{
+	background-position: -40px -108px;
+}
+#Menu-b .Menu-b5{
+	width: 39px;height: 39px;background-position: -100px -108px;
+}
+
+#Menu-b .Menu-b1:hover{
+	background-position: -80px -128px;
+}
+#Menu-b .Menu-b2:hover{
+	background-position: 0px -128px;
+}
+#Menu-b .Menu-b3:hover{
+	background-position: -59px -128px;
+}
+#Menu-b .Menu-b4:hover{
+	background-position: -40px -128px;
+}
+#Menu-b .Menu-b5:hover{
+	width: 39px;height: 39px;
+	background-position: -140px -108px;
+}
+/*  顶部导航切换*/
+#Tmenu{
+	position: absolute;
+	bottom: 40px;
+	right: 50%;
+	z-index: 4;
+	margin-left: -150px;
+	width: 200px;
+	height: 30px;
+	border-radius: 4px;
+	background: rgba(0,0,0,0.5);
+}
+#Tmenu a{
+	font-weight: bold;
+	color: white;
+}
+#Tmenu ul{
+	overflow: hidden;
+	margin-left: 48px;
+	margin-top:3px;
+	float: left;
+}
+#Tmenu ul li{
+	float: left;
+	width: 22px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+}
+.clear:after{
+	clear: both;display: block;content: '';
+}
+.clear{
+	zoom: 1;
+}
+
+#Tmenu ul li.active{
+	background: url(image/webqq_icon.png) no-repeat -141px -44px;
+}
+#Tmenu ul a{
+	display: inline-block;
+	padding-right: 4px;
+	color: #fff;
+	font-size: 14px;
+	font-family: '微软雅黑';
+}
+/*--------------------------桌面图标-------------------------------- */
+#web_icon{
+	z-index: 1;
+	left: 100px;
+	top: 0;
+	position: absolute;
+}
+#web_icon{
+	position: absolute;
+	top: 0;
+	left: 100px;
+	z-index: 1;
+}
+#icon{
+	position: absolute;
+	top: 95px;
+	left: 0px;
+}
+#icon ul{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#icon li{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 5px 5px 0 5px;
+	width: 90px;
+	height: 90px;
+	text-align: center;
+	opacity: 1;
+	filter: apha(opacity:100);
+}
+/* 移入文件夹改变颜色*/
+.hover{
+	display: inline-block;
+	border-radius: 3px;
+	background: rgba(0,0,0,0.4);
+}
+#icon i{
+	display: inline-block;
+	margin-top: 5px;
+	width: 80%;
+	height: 20px;
+	border-radius: 10px;
+	background: rgba(1,0,1,0.5);
+	color: #fff;
+	font-size: 12px;
+	line-height: 20px;
+}
+#icon i input{
+	padding: 0;
+	width: 52px;
+	height: auto;
+	outline: none;
+	border: none;
+	background: none;
+	color: #fff;
+	text-align: center;
+}
+#icon img{
+	padding-top: 5px;
+	width: 50%;
+	height: 50%;
+}
+/*-------------------鼠标右键菜单--------------------------------*/
+#dblclick{
+	position:absolute;
+	z-index: 100;
+}
+#open_icon{
+	position: absolute;
+	z-index: 100;
+}
+#dblclick ul,#open_icon ul{
+	/*border: 1px solid black;*/
+	position: absolute;
+	width: 150px;
+	background: #ccc;
+	display:none;
+	box-shadow: inset 0 0 1px 1px rgba(0,0,112,255);
+	/*opacity: .9;*/
+}
+#dblclick li,#open_icon li{
+	position: relative;
+	float: left;
+	
+	
+}
+#dblclick h2,#open_icon h2{
+	text-indent: 10px;
+	line-height: 30px;
+	font-size: 12px;
+	height: 30px;
+	width: 150px;
+}
+#dblclick span,#open_icon span{
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	/*border-top: 5px solid transparent;
+	border-left: 5px solid red;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid transparent;*/
+}
+#right_dbl ul,#open_right ul{
+	position: absolute;
+	top: 0;
+	left: 150px;
+	
+}
+/*#right_dbl >li:nth-of-type(3),#open_right_icon >li:nth-of-type(3){
+	border-bottom: 1px solid red;
+}
+#right_dbl >li:nth-of-type(4),#open_right_icon >li:nth-of-type(4){
+	border-bottom: 1px solid red;
+}
+#right_dbl >li:nth-of-type(5),#open_right_icon >li:nth-of-type(5){
+	border-bottom: 1px solid red;
+}*/
+/*---移入H2 加class*/
+#dblclick .active ,#open_icon .active {
+	height: 30px;
+	background-color:slategray;
+	line-height: 30px;
+	border-bottom: 1px solid red;
+	
+}
+#dblclick .show,#open_icon .show{
+	border-top: 5px solid transparent;
+	border-left: 5px solid red;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+}
+/*---------------------切换背景图-------------------------------*/
+#skin{
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 100px;
+	z-index: 100;
+	width: 755px;
+	overflow: hidden;
+	/*box-shadow: 1px 1px 3px red ;*/
+}
+#skin a {
+	float: right;
+	margin-top: 5px;
+}
+.skin_content{
+	margin-top: -5px;
+	padding-top: 38px;
+	background-color: #fff;
+}
+.title{
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	background: pink;
+	box-shadow: 0px -1px 1px #9B9B9B;
+	line-height: 30px;
+	}
+.title h2{
+	
+	color: #ffffff;
+	height: 30px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 30px;
+	cursor: pointer;/*手型*/
+	}
+#closed{
+	position: absolute;
+	top: -3px;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	}
+
+#closed span i:nth-of-type(1),#closed span i:nth-of-type(2){
+	position: absolute;
+	bottom: 8px;
+	left: 0;
+	display: inline-block;
+	height: 4px;
+	width: 18px;
+	background: black;
+	transform: rotate(45deg);
+	border-radius: 2px;
+}
+#closed span i:nth-of-type(2){
+	transform: rotate(-45deg);
+}
+
+#closed span:hover{
+	transform: rotateZ(180deg);
+}
+
+.skin_ul li{
+	float: left;
+	padding: 0 25px;
+	width: 200px;
+	text-align: center;
+}
+.skin_ul li:hover p{
+	color:red;
+}
+.skin_ul p{
+	padding: 6px 0 15px 0;
+	font-size: 14px;
+}
+.skin_ul li img{
+	width: 190px;
+	height: 150px;
+	box-shadow: 1px 1px 2px #aaa;
+}
+.close_img{
+	position: absolute;
+	right: 20px;
+	top: 0;
+}
+/*----------------时钟------------------------*/
+#bg{
+	width: 220px;
+	height: 220px;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	z-index: 100;
+}
+/*时钟的样式*/
+#wrap{
+	width: 200px;
+	height: 200px;
+	border: 10px solid #C1E2B3;
+	border-radius: 50%;
+	box-shadow: 0px 0px 20px 10px #444 inset;
+	position: relative;
+}
+#wrap ul{
+	height: 200px;
+	position: relative;
+}
+#wrap ul li{
+	height: 6px;
+	position: absolute;
+	left: 99px;
+	top: 0;
+	border: 1px solid #000;
+	transform-origin: center 100px ;
+	border-radius: 50%;
+}
+#wrap li span{
+	color: #000000;
+	font-size: 20px;
+	position: absolute;
+	left: -5px;
+	top: 12px;
+	font-weight: bold;
+}
+#wrap ul li:nth-of-type(5n+1){
+	height: 12px;
+	border: 1px solid red;
+}
+#hour{
+	width: 4px;
+	height: 45px;
+	position: absolute;
+	left: 99px;
+	top: 55px;
+	background: black;
+	transform-origin: bottom;
+}
+#min{
+	width: 3px;
+	height: 65px;
+	position: absolute;
+	left: 100px;
+	top: 35px;
+	background: black;
+	transform-origin: bottom;
+}
+#sec{
+	width: 2px;
+	height: 80px;
+	position: absolute;
+	left: 99px;
+	top: 20px;
+	background: red;
+	transform-origin: bottom;
+}
+.ico{
+	width: 10px;
+	height: 10px;
+	background: #000;
+	border-radius: 50%;
+	position: absolute;
+	left: 96px;
+	top: 93px;
+}
+/*---弹出层---------------------------------*/
+#win_mask{
+	position: absolute;
+	z-index: 21;
+	overflow: hidden;
+	width: 800px;
+	height: 500px;
+	opacity: 1;
+	filter: apha(opacity:100);
+	}
+.show{
+	display: block;
+}
+.hidden{
+	display: none;
+	}
+.title{
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	background: #87c1fe;
+	box-shadow: 0px -1px 1px #9B9B9B;
+	line-height: 30px;
+	}
+.title h2{
+	height: 30px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 30px;
+	cursor: pointer;/*手型*/
+	}
+.title .win_control{
+	position: absolute;
+	top: 5px;
+	right: 0;
+	width: 82px;
+	height: 30px;
+	}
+.content{
+	padding-top: 30px;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	}
+.title .win_control a{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(image/webqq_icon1.png) no-repeat;
+	}
+/*最小化窗口*/
+.title .win_control a.reduce{
+	padding-top: 4px;
+	background-position: -3px -5px;
+	}
+/*最大化窗口*/
+.title .win_control a.magnify{
+	background-position: -3px -39px;
+	}
+/*点击出现最大化时的按钮*/
+.title .win_control a.bg{
+	background-position: -3px -69px;
+	}
+/*关闭窗口*/
+.title .win_control a.close{
+	background-position: -4px -100px;
+	}
+/*鼠标经过窗口的时候*//*最小化窗口*/
+.title .win_control a.reduce:hover{
+	padding-top: 4px;background-position: -3px -126px;
+	}
+/*最大化窗口*/
+.title .win_control a.magnify:hover{
+	background-position: -3px -159px;
+	}
+.title .win_control a.bg:hover{
+	background-position: -3px -190px;
+	}
+/*关闭窗口*/
+.title .win_control a.close:hover{
+	background-position: -4px -219px;
+	}
+/*窗口内容*/.content{
+	padding-top: 30px;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	}
+/*此div.con_cover 目的用来覆盖iframe内容的，因为iframe引入的网页是不能够拖拽的，需要一个成设置为背景设置为透明色覆盖在其上面，防止鼠标在iframe区域拖拽事件不器作用*/
+.content div.con_cover{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	}
+.content iframe{
+	width: 100%;
+	height: 100%;
+	border: none;
+	}
+	/*--------------------------------------*/
+	.date {
+		  width: 250px;
+		  height: 250px;
+		  border-radius: 50%;
+		  border: 6px solid #1C1E22;
+		  /*margin: 100px auto;*/
+		  position: absolute;
+		  right: 10px;
+		  bottom: 10px;
+		  z-index: 300;
+		  box-shadow: inset 0 0 125px #1C1E22;
+		}
+		.date span {
+		  color:  red;
+		  position: absolute;
+		  width: 16px;
+		  text-align: center;
+		  display: block;
+		}
+		.date .dian {
+		  width: 20px;
+		  height: 20px;
+		  background: red;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  border-radius: 50%;
+		  margin-left: -10px;
+		  margin-top: -10px;
+		  z-index: 1;
+		}
+		.date .pointer {
+		  background: #C0C0C0;
+		  position: absolute;
+		  left: 50%;
+		  margin-left: -3px;
+		  width: 6px;
+		  transform-origin: bottom;
+		}
+		.date .pointer:after {
+		  position: absolute;
+		  content: "";
+		  width: 0;
+		  height: 0;
+		  border: 3px solid red;
+		  top: -6px;
+		  border-color: transparent transparent red transparent;
+		}
+		.date i {
+		  display: block;
+		  width: 2px;
+		  height: 8px;
+		  background: black;
+		  position: absolute;
+		  transform-origin: top;
+		}
+		.date .hours {
+		  top: 55px;
+		  height: 70px;
+		  
+		}
+		.date .min {
+		  top: 45px;
+		  height: 80px;
+		}
+		.date .sec {
+		  top: 35px;
+		  height: 90px;
+		  background: red;
+		}
+		.sec span{
+			color: black;
+		}

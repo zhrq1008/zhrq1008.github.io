@@ -15,7 +15,7 @@
 var projects = [
 		{
 			projectName:"webqq",
-			projectWebsite:"https://zhrq10.github.io/",
+			projectWebsite:"Web.qq/",
 		    startTime:"2016.09.12",
 			endTime:"至今",
 			projectExplain:"使用原生javascript进行开发，顶部菜单功能、桌面图标、桌面切换、系统右键功能、文件右键功能、时钟css3实现。",
@@ -23,8 +23,17 @@ var projects = [
 			projectThumbnail:"images/icon/web.png"
 		},
 		{
+			projectName:"小蜜蜂",
+			projectWebsite:"youxi/xiaomifeng.html",
+		    startTime:"2016.09.12",
+			endTime:"至今",
+			projectExplain:"键盘事件、碰撞检测、数据与逻辑、速度算法",
+			projectLabel:["html","css3","css","js"],
+			projectThumbnail:"images/icon/youxi.jpg"
+		},
+		{
 			projectName:"携程官网",
-			projectWebsite:"zhrq1008.github.io/xiecheng",
+			projectWebsite:"xiecheng/index.html",
 		    startTime:"2016.05.01",
 			endTime:"2016.05.05",
 			projectExplain:"入门HTML5模仿写携程官网静态页面",
