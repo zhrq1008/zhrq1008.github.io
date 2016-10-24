@@ -1,0 +1,662 @@
+.top{
+	width: 100%;
+	height: 2.4rem;
+	background: #ff4400;
+	position: absolute;
+	top:0;
+	left:0;
+	
+}
+.top-lf{
+	width: 1.5rem;
+	height: 1.65rem;
+	margin-left: 0.6rem;
+	margin-top: 0.35rem;
+	text-indent: -999rem;
+	background: url(../img/1.gif) no-repeat;
+	background-size:100% ;
+}
+.top-ri{
+	width: 1.5rem;
+	height: 1.65rem;
+	margin-right: 0.6rem;
+	margin-top: 0.35rem;
+	text-indent: -999rem;
+	background: url(../img/2.gif);
+	background-size:100% ;
+}
+.search{
+	width: 9.4rem;
+	height: 1.6rem;
+	background: #dd2201;
+	margin-top: 0.4rem;
+	margin-left:1.25rem;
+	border-radius: 0.1px;
+}
+.search1{
+	width: 1.25rem;
+	height: 1.6rem;
+	background: url(../img/4.gif);
+	background-size:100% ;
+}
+.search2{
+	width: 1.25rem;
+	height: 1.6rem;
+	background:url(../img/5.gif) ;
+	background-size:100% ;
+}
+.form input{
+	border: 0px;
+	font-size: 0.5rem;
+	width: 6.75rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	background: #dd2201;
+}
+.banner img{
+	width: 16rem;
+	height: 5rem;
+	margin-top: 2.4rem;
+}
+.menu{
+	width: 100%;
+	height: 7.175rem;
+	border-top: 0.025rem solid #dd2201;
+}
+.menua{
+	width: 14.15rem;
+	height: 7.175rem;
+	margin-left: 0.925rem;
+}
+.menua span{
+	font-size: 0.5rem;
+}
+
+.menua img{
+	width: 1.875rem;
+	height: 1.85rem;
+}
+.menu1{
+	margin-right: 0.725rem;
+	margin-top: 0.5rem;
+	width: 2.25rem;
+	height: 2.85rem;
+	text-align: center;
+	font-size:0.5rem ;
+	line-height: 1rem;
+}
+.menu1-2{
+	margin-top: 0.5rem;
+	width: 2.25rem;
+	height: 2.85rem;
+	text-align: center;
+	font-size:0.5rem ;
+	line-height: 1rem;
+}
+.news{
+	width: 100%;
+	height: 2.525rem;
+	border-top: 0.025rem solid #dd2201;
+}
+.newslf{
+	margin-top: 0.225rem;
+	width: 3rem;
+	height: 2.075rem;
+	border-right: 0.025rem solid #dd2201;
+	background:url(../img/7.gif) ;
+	background-size:100% ;
+}
+.newsri{
+	width: 11.5rem;
+	height: 0.225rem;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
+	line-height: 0.85rem;
+	font-size: 0.5rem;
+	text-indent: 0.35rem;
+	
+}
+.newsriA{
+	margin-top: 0.35rem;
+	width: 0.2rem;
+	height: 0.2rem;
+	background:url(../img/8.gif) no-repeat   ;
+	background-size:100% ;
+}
+.newsri p{
+	font-size: 0.5rem;
+	line-height: 0.85rem;
+	
+	
+}
+.f5{
+	width: 100%;
+	height: 8.075rem;
+	border-top: 0.25rem solid #eeeeee;
+}
+.f5lf{
+	width: 6.125rem;
+	height: 8.075rem;
+	border-bottom: 0.025rem solid #eeeeee;	
+	border-right: 0.025rem solid #eeeeee;	
+}
+.f5ri{
+	width: 9.85rem;
+	height: 8.075rem;
+	
+}
+h5{
+	margin-left: 0.3rem ;
+	margin-top: 0.5rem ;
+	width: 6.125rem;
+	height: 1.25rem;
+	text-indent: -999rem;
+	
+}
+.h5-1{
+	margin-top:0.5rem  ;
+	margin-left: 0.3rem   ;
+	width: 3.325rem;
+	height: 0.75rem;
+	background:url(../img/9.gif) no-repeat   ;
+	background-size:100% ;
+}
+.f5lf img{
+	width: 5.75rem;
+	height: 5.825rem;
+}
+.f5lf p{
+	width: 6.125rem;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: 0.5rem;
+	text-indent:0.375rem ;
+}
+.f5lf a{
+	margin-left: 0.375rem;
+}
+
+h6{
+	width: 4.875rem;
+	height: 1.325rem;
+	text-indent: -999rem;
+	background:url(../img/12.gif) no-repeat;
+	background-size:100% ;
+}
+.f5ria{
+	width: 9.85rem;
+	height: 3.7rem;
+	border-bottom: 0.025rem solid #eeeeee;	
+	
+}
+.f5ria1{
+	width: 4.875rem;
+	height: 3.7rem;
+	
+}
+.f5ria1 p{
+	text-indent: 0.4rem;
+	font-size: 0.5rem;
+	line-height: 0.8rem;
+}
+.f5ria2{
+	width: 4.975rem;
+	height: 3.7rem;	
+}
+.f5ria2 img{
+	width: 4.975rem;
+	height: 3.7rem;	
+}
+.f5rib{
+	width: 9.85rem;
+	height: 4.35rem;
+	border-bottom: 0.025rem solid #eeeeee;	
+	
+}
+.f5rib1{
+	width: 4.875rem;
+	height: 4.35rem;
+}
+.f5rib2{
+	width: 4.95rem;
+	height: 4.35rem;
+	border-left: 0.025rem solid #eeeeee;	
+}
+.f5rib img{
+	width: 4.875rem;
+	height: 2.6rem;
+}
+.shihui-lf img{
+	width: 6.125rem;
+	height: 3.025rem;
+}
+.shihui-ri img{
+	width: 3.275rem;
+	height: 3.025rem;
+}
+.airuangjie{
+	height:0.95rem;
+	background:url(../img/15.gif) no-repeat;
+	background-size:100% ;
+}
+.bimai{
+	height:0.95rem;
+	background:url(../img/16.gif) no-repeat;
+	background-size:100% ;
+}
+.f5rib p{
+	font-size: 0.5rem;
+	line-height: 0.8rem;
+	text-indent: 0.375rem;
+	
+}
+.f6{
+	font-size: 0.65rem;
+	width: 100%;
+	height: 10.725rem;
+	border-top: 0.25rem solid #eeeeee;
+}
+.head6{
+	width:100%;
+	
+	height: 1.35rem;
+	text-indent:7.45rem;	
+	line-height:1.35rem;
+	border-bottom:0.025rem solid #eeeeee;
+	background:url(../img/17.gif) no-repeat 6.525rem 0;
+	background-size:100% ;
+}
+.head6 a{	
+	color: #fe4500;
+	font-size: 0.6rem;
+}
+.shihui{
+	width:100%;
+	height:9.35rem;
+}
+.shihui-lf{
+	width:6.125rem;
+	height:9.35rem;	
+}
+.shihui-lfa{
+	width:6.125rem;
+	height:4.675rem;	
+	border-bottom:0.025rem solid #eeeeee;
+}
+.shihui-lfa p{
+	line-height: 0.55rem;
+	font-size: 0.5rem;
+	text-indent: 0.375rem;
+}
+.shihui-lf1{
+	width:6.125rem;
+	height: 1.1rem;
+	background:url(../img/18.gif) no-repeat;
+	background-size:100% ;
+}
+.shihui-ri{
+	width:9.85rem;
+	height: 9.35rem;
+}
+.shihui-ria{
+	width:3.25rem;
+	height: 4.675rem;
+	border-bottom:0.025rem solid #eeeeee;
+	border-left:0.025rem solid #eeeeee;
+}
+.shihui-ria1{
+	width:3.25rem;
+	height: 0.85rem;
+	padding-top: 0.25rem;
+	line-height: 0.85rem;
+	font-size: 0.6rem;
+	text-indent: 0.375rem;
+	font-weight: bold;
+}
+.shihui-ria2{
+	width:3.25rem;
+	line-height: 0.55rem;
+	height: 0.55rem;
+	font-size: 0.5rem;
+	text-indent: 0.375rem;
+}
+.f7{
+	width: 100%;
+	height: 10.775rem;
+	border-top: 0.25rem solid #eeeeee;
+}
+.f7-top{
+	width: 100%;
+	height: 1.35rem;
+	font-size: 0.65rem;
+	text-align: center;
+	line-height:1.35rem ;
+	color: #dd2201;
+	border-bottom:0.025rem solid #eeeeee ;
+}
+.f7-m{
+	width: 100%;
+	height: 4.675rem;
+	border-bottom:0.025rem solid #eeeeee ;
+}
+.f7-m img{
+	width: 7.975rem;
+	height: 3.575rem;
+}
+.f7-b{
+	width: 7.975rem;
+	height: 3.575rem;
+}
+img{
+	width: 100%;
+	height: 100%;
+}
+.f7-ma{
+	width: 7.975rem;
+	height: 4.675rem;
+	border-right: 0.025rem solid #eeeeee ;
+}
+.f7-mb{
+	width: 7.975rem;
+	height: 4.675rem;
+	
+}
+.f7-m1{
+	width: 7.975rem;
+	height: 0.95rem;
+	font-size: 0.65rem;
+	line-height: 0.95rem;
+	padding-top: 0.175rem;
+	text-indent: 0.375rem;
+}
+.f7-b{
+	width: 100%;
+	height: 4.7rem;
+}
+.f7-b1{
+	width: 3.975rem;
+	height: 4.7rem;
+	border-right: 0.025rem solid #eeeeee;
+}
+.f7-ba{
+	width:3.975rem ;
+	height: 0.625rem;
+	padding-top: 0.375rem;
+	font-size: 0.625rem;
+	line-height: 0.625rem;
+	text-indent: 0.375rem;
+}
+.f7-bb{
+	width:3.975rem ;
+	height: 0.775rem;	
+	font-size: 0.5rem;
+	line-height: 0.775rem;
+	text-indent: 0.375rem;
+}
+.f8{
+	width: 100%;
+	height: 4.725rem;
+	border-bottom: 0.25rem solid #eeeeee;
+	
+}
+.f8-top{
+	width: 100%;
+	height: 1.55rem;
+	
+}
+.f8-toplf{
+	width: 4rem;
+	height: 1.55rem;
+	background:url(../img/f8/1.gif);
+	background-size:100% ;
+}
+.f8-topri{
+	height: 1.55rem;
+	line-height: 1.55rem;
+	margin-right: 0.25rem;
+	font-size: 0.6rem;
+}
+.f8-topri a{
+	font-size: 0.6rem;
+}
+.f9{
+	width: 100%;
+	height:16.8rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.f9-top{
+	width: 100%;
+	height:1.35rem;
+	border-bottom: 0.05rem solid #eeeeee;
+}
+.f9-topL{
+	font-size: 0.65rem;
+	line-height:1.35rem ;
+	margin-left: 7.15rem;
+	color: #2eb23d;
+}
+.f9-topR{
+	/*height: 0.6rem;
+	width: 1.2rem;*/
+	height:1.35rem ;
+	font-size: 0.55;
+	line-height:1.35rem ;
+	margin-right: 0.6rem;
+	color: #6f6f71;
+}
+.f9-topR a{
+	font-size: 0.6rem;
+}
+.f9B{
+	width: 100%;
+	height:6.15rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.f9B1{
+	width: 7.975rem;
+	height:6.15rem;
+	border-right: 0.025rem solid #eeeeee;
+}
+.f9B2{
+	width: 7.974rem;
+	height:6.15rem;
+
+}
+.f9B1a{
+	width: 2.5rem;
+	height:1.3rem;
+	text-indent: 0.6rem;
+	margin-top: 0.65rem;
+}
+.f9B1aa{
+	width: 2.5rem;
+	height:1.3rem;
+	text-indent: 0.6rem;
+	margin-top: 0.65rem;
+}
+.f9B1a p ,.f9B1aa p{
+	width: 3.75rem;
+	 line-height:1.3rem;
+	line-height: 0.6rem;
+}
+.f9B1a1{
+	text-indent: 0.6rem;
+	font-size: 0.6rem;
+	width: 3.75rem;
+	height:0.6rem;
+	line-height: 0.6rem;
+}
+.f9B1a2{
+	text-indent: 0.6rem;
+	font-size: 0.5rem;
+	width: 3.75rem;
+	height:0.5rem;
+	line-height: 0.5rem;
+}
+.f9B1b{
+	width: 7.975rem;
+	height:4.2rem;
+}
+
+.f9C{
+	width: 100%;
+	height: 9.225rem;
+}
+.f9CA{
+	margin-left: 0.375rem;
+	width: 15.25rem;
+	height: 9.225rem;
+}
+.f9C img{
+	width: 3.8rem;
+	height: 2.775rem;
+}
+.f9C1{
+	padding-top: 0.5rem;
+	width: 3.8rem;
+	height: 4.6rem;
+	border-bottom: 0.025rem solid #eeeeee ;
+}
+.f11{
+	width: 100%;
+	height: 10.125rem;
+	border-bottom: 0.025rem solid #eeeeee;
+	
+}
+.f11top{
+	width: 100%;
+	height: 1.35rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.f11m{
+	width: 100%;
+	height: 6.825rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.f11m img{
+	width: 4.825rem;
+	height: 6.825rem;
+}
+.f11ma{
+	width: 15.625rem;
+	height: 6.825rem;
+}
+
+.f11ma1{
+	margin-right: 0.375rem;
+}
+.f11b{
+	width: 100%;
+	height: 1.9rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.f11b span{
+	font-size: 0.675rem;
+	line-height: 1.9rem;
+}
+.f11bri{
+	margin-right: 0.625rem;
+	margin-top: 0.25rem;
+	width: 1.35rem;
+	height: 1.375rem;
+	background: url(../img/23.gif) no-repeat;
+	background-size:100% ;
+}
+.f12{
+	width: 100%;
+	height: 7.675rem;
+	border-top: 0.125rem solid #eeeeee;
+}
+
+.f12t{
+	width: 100%;
+	height:1.35rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.f12ml{
+	width: 7.375rem;
+	height:6.3rem;
+	margin-left: 0.375rem;
+	margin-right: 0.5rem;
+}
+.f12mr{
+	width: 7.75rem;
+	height:6.3rem;
+}
+
+.like{
+	width: 100%;
+	height:2rem;
+	background: #eeeeee;
+}
+
+.likeborder{
+	height: 1rem;
+	width: 4.3rem;
+	border-bottom: 0.025rem solid #aaaaa8;
+}
+.likem{
+	height: 2rem;
+	width: 7.4rem;
+}
+.likeml{
+	margin-left: 1rem;
+		height: 2rem;
+		width: 1.5rem;
+		background:url(../img/24.gif);
+		background-size:100% ;
+}
+
+.likemr{
+	margin-left: 0.25rem;
+	margin-top: 0.35rem;
+	height: 1.25rem;
+	width: 3.75rem;
+	font-size: 0.55rem;
+}
+.likemra{
+	font-size: 0.65rem;
+}
+
+.likeB{
+	height: 7.25rem;
+	width: 16rem;
+	margin-top: 0.1rem;
+}
+.likeBl{
+	height: 7.25rem;
+	width: 7.925rem;
+	margin-right: 0.15rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+.likeB2{
+	height: 7.25rem;
+	width: 7.925rem;
+	border-bottom: 0.025rem solid #eeeeee;
+}
+footer{
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2.425rem;
+	position: absolute;
+
+	border-top: 0.025rem solid #eeeeee;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	background:url(../img/0.gif) no-repeat;
+	background-size: 100%;
+	
+}
+.foot-5,.foot-4,.foot-3,.foot-2, .foot-1{
+	width: 2rem;
+	height: 2.425rem;
+	border-top: 0.025rem solid red;
+	
+}
+
+
+
+
+

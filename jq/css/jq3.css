@@ -1,0 +1,95 @@
+@media only screen and (max-width:462px){
+	.nav{
+		display: none;
+	}
+	.content-first{
+		padding-top: 0;
+	}
+	.content-second{
+		padding-left: 20px;
+		padding-right: 18px;
+		width: 91.3%;
+	}
+	.second-right{
+		padding-top: 0;
+	}
+	.content-second{
+		height: auto;
+		padding-top: 71px;
+	}
+	.third-top{
+		padding-left: 64px;
+	}
+	.down{
+		display: none;
+	}
+	.down li{
+		/*display: none;*/
+		padding-right: 0;
+	}
+	.navigate{
+		display: block;
+	}
+	.content-third{
+		padding-bottom: 20px;
+		border-radius: 4px 4px 0 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.third-right{
+		width: 90%;
+		margin: 0 auto;
+	}
+	.third-left li{
+		margin-top: 0;
+		width: 100%;
+	}
+	.third-left .fun2,.third-left .fun3{
+		margin-top: 15px;
+	}
+	.content-forth{
+		width: 88.9%;
+		padding: 15px 25px 0;
+		/*margin-right: 0;*/
+	}
+	.form{
+		display: block;
+	}
+	.content-fifth{
+		width: 88.9%;
+		padding: 15px 25px 0;
+		/*margin-right: 0;*/
+	}
+	.title2{
+		letter-spacing: -2px;
+	}
+	.members{
+		margin-bottom: 0;
+	}
+	.members li{
+		margin-top: 0;
+	}
+	.footer-top{
+		padding-bottom: 30px;
+	}
+	.footer-bottom{
+		width: 96%;
+	}
+	.footer-bottom .had-margin{
+		margin-left: 0;
+		margin-top: 10px;
+	}
+	.right li{
+		margin-right: 24px;
+	}
+	.right .had-margin1{
+		margin-left: 125px;
+		margin-top: 10px;
+	}
+	.forth-bottom{
+		width: 100%;
+	}
+	.web{
+		width: 90%;
+	}
+}
