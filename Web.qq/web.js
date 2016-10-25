@@ -668,7 +668,7 @@ window.onload = function(){
 			var inp = obj.getElementsByTagName('input'); //获取li下面的input标签
 
 		 url = [
-				['https://pan.baidu.com/', 'https://map.qq.com/', 'https://www.kuaipan.cn/', 'https://qqreader.qq.com/', 'https://reader.qq.com/cgi-bin/loginpage', 'https://zhrq1008.github.io/Webqq/jianjie/index.html'],
+				['https://pan.baidu.com/', 'https://map.qq.com/', 'https://www.kuaipan.cn/', 'https://qqreader.qq.com/', 'https://reader.qq.com/cgi-bin/loginpage', 'https://zhrq1008.github.io/Web.qq/jianjie/'],
 				['https://douban.fm/partner/qq_plus', 'https://webqq.qidian.com', 'https://www.kuaidi100.com/ad/head_ad.html', 'https://www.dooland.com/', 'https://www.le.com/', 'https://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
 				['https://qqreader.qq.com/', 'https://v.qq.com/', 'https://www.le.com/'],
 				['https://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'https://www.3366.com/', 'https://web.3366.com/ddz/'],
@@ -1140,46 +1140,36 @@ window.onload = function(){
 //				spans[i].innerHTML = i/5;
 //			}
 //		}
-		time();
-		setInterval(function(){
-			time();
-		},1000)
-		function time(){
-			//获取本机时间
-			var date = new Date();
-			//获取秒数
-			var second = date.getSeconds();
-			//获取分钟
-			var min = date.getMinutes()+second/60;
-			//获取小时
-			var hour =date.getHours()+min/60;
-			//秒数的针数
-			sec.style.transform = 'rotate('+second*6+'deg)';
-			//分钟的针数
-			minu.style.transform = 'rotate('+min*6+'deg)';
-			//小时的时针
-			h.style.transform = 'rotate('+hour*30+'deg)';
-		}
+//		time();
+//		setInterval(function(){
+//			time();
+//		},1000)
+//		function time(){
+//			//获取本机时间
+//			var date = new Date();
+//			//获取秒数
+//			var second = date.getSeconds();
+//			//获取分钟
+//			var min = date.getMinutes()+second/60;
+//			//获取小时
+//			var hour =date.getHours()+min/60;
+//			//秒数的针数
+//			sec.style.transform = 'rotate('+second*6+'deg)';
+//			//分钟的针数
+//			minu.style.transform = 'rotate('+min*6+'deg)';
+//			//小时的时针
+//			h.style.transform = 'rotate('+hour*30+'deg)';
+//		}
+//
+//	
+//	dows(bg);
 
-	
-	dows(bg);
-	bg.onmousedown
 	
 	function dows(obj){
 	obj.onmousedown=function(ev){
-//		if (obj.aaa == 2)
-//		{
-//			return;
-//		}
-		
 		var ev=ev||event;
 		var iLeft=ev.clientX-obj.offsetLeft;
 		var iTop=ev.clientY-obj.offsetTop;
-			
-//		if(obj.setCapture)
-//		{
-//			obj.setCapture();
-//		}
 		document.onmousemove=function(ev){
 			var ev=ev||event;
 			var L=ev.clientX-iLeft;
@@ -1208,10 +1198,6 @@ window.onload = function(){
 			document.onmouseup=function(){
 				document.onmousemove=null;
 				document.onmouseup=null;
-//				if(obj.releaseCapture)
-//				{
-//					obj.releaseCapture();
-//				}
 			}
 	
 			return false;
