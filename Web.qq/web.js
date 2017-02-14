@@ -74,6 +74,7 @@ window.onload = function(){
 			};
 			imgs[i].onmouseover = function(){
 				bg_yl.style.background = 'url('+this.src+')';
+				bg_yl.style.backgroundSize = '100% 100%';
 			};
 		}
 	}
@@ -132,6 +133,7 @@ window.onload = function(){
 		setTimeout(function(){
 			land.style.display = 'none';
 		},100);
+		
 	};
 	
 	 /*-------------------------注册验证---------------------------------------*/
@@ -144,7 +146,7 @@ window.onload = function(){
 	var woman = document.getElementById('woman');
 	var regPhone = /^1[3|4|5|8][0-9]\d{8}$/; //匹配手机号
 	var Ppassword = /^[A-Za-z0-9]{6,12}$/; //匹配密码
-	var valU, valP, valPY, valR =man.value,//手机号、密码、冲输密码 、性别
+	var valU, valP, valPY, valR =man.value,//手机号、密码、重输密码 、性别
 		imgSrc = 'man'; //默认选中男;
 		//验证用户名用手机号
 		username.onfocus = function() {//象获得焦点时
@@ -294,7 +296,7 @@ window.onload = function(){
 	user.onclick = function() {
 		setInterval(function() {
 			v_user = user.value;
-		}, 10)
+		}, 10);
 	}
 	pas.onclick = function() {
 		setInterval(function() {
@@ -314,36 +316,104 @@ window.onload = function(){
 					alert('您输入密码或用户名错误');
 				}else if(json && v_user ==json.username && v_pas == json.password){
 					alert('登陆成功');
+					key = v_user;//保存用户名
 					qq.style.display = 'block';
 					dlc(loading,350)
 				}
 			
 		}
 	}
-	var jiantou = document.getElementById('jiantou');
-	var aing = yonghu.getElementsByTagName('li')[0];
-	jiantou.onmouseover = function(){
+	var point_span = qq.getElementsByTagName('span')[0];
+	var down_red = document.getElementById('down_red');
+	var pw_reset = yonghu.getElementsByTagName('li')[0];//重置密码；
+	var exit = yonghu.getElementsByTagName('li')[1];//退出
+	qq.onmouseover = function(){
+		yonghu.style.display ='block';
+		point_span.className = 'point'
+	}
+	qq.onmouseout = function(){
+		yonghu.style.display ='none';
+		point_span.className = '';
+	}
+	exit.onmouseover = function(){
 		yonghu.style.display ='block';
 	}
-	jiantou.onmouseout = function(){
-		setTimeout(function(){
-			yonghu.style.display ='none';
-		},800)
+	exit.onclick = function(){
+		if(confirm('确定要退出?')){
+			qq.style.display = 'none';
+			return;
+		}
+		
 	}
-	aing.onmouseover = function(){
-		yonghu.style.display ='block';
+	//修改密码
+	var od_pw = document.getElementById('od_pw');
+	var new_pw = document.getElementById('new_pw');
+	var yes = document.getElementById('yes');
+	var no = document.getElementById('no');
+	var change_pw = document.getElementById('change_pw');
+	var odvalue, newvalue;
+	
+	//获取原密码
+	od_pw.onclick = function(){
+		setInterval(function(){
+			odvalue = od_pw.value;
+		},10)
+//		console.log(odvalue)
 	}
-	aing.onclick = function(){
-		confirm('确定要退出?')
-		qq.style.display = 'none';
+	//获取新密码；
+	new_pw.onclick = function(){
+		setInterval(function(){
+			newvalue = new_pw.value;
+		},10)
+//		console.log(newvalue)
+	}
+	//确定修改原密码
+	yes.onclick = function(){
+		var json = JSON.parse(localStorage.getItem(key))//获取用户名下属性
+//		console.log(json)
+		if(odvalue == undefined || odvalue == ''){
+			alert('不能为空');
+		}
+		if(odvalue && newvalue){
+//			console.log(json.password)
+			if(!json){
+				alert('密码错误');
+			}else if(json && json.password == newvalue){
+				alert('两次密码不能重复');
+			}else if(json && json.password != newvalue){
+				if(!newvalue.match(Ppassword)){
+					alert('密码必须是6——12位')
+				}else{
+					alert('修改密码成功');
+					json.password = newvalue;
+					localStorage.setItem(key,JSON.stringify(json));//保存新的密码
+				}
+			}
+		}
+		
+	}
+	no.onclick = function(){
+		od_pw.value = '';
+		new_pw.value = '';
+	}
+	pw_reset.onclick = function(){
+		change_pw.style.display = 'block';
 	}
 	//登陆窗口拖拽
+	var login_top = document.querySelector('#loading .top');
 	login_top.onmousedown = function(ev) {
 		drag(ev,loading);
 	}
+	
 	//注册窗口拖拽
+	var land_top = document.querySelector('#land .l_top');
 	land_top.onmousedown = function(ev) {
 		drag(ev,land);
+	}
+	//重置密码
+	var change_pwO = document.querySelector('#change_pw .change_pwO');
+	change_pwO.onmousedown = function(ev) {
+		drag(ev,change_pw);
 	}
 	function drag(ev, obj) {
 		var disX = ev.clientX - obj.offsetLeft;
@@ -369,17 +439,64 @@ window.onload = function(){
 			}
 			obj.style.left = (x) + 'px';
 			obj.style.top = (y) + 'px';
+			return false;
 		}
 		document.onmouseup = function() {
-			document.onmousemove = document.onmouseup = null;
+			document.onmousemove = null;
+			document.onmouseup = null;
 		};
 		return false;
+	}
+	//日期
+	var date_time = document.getElementById('times');
+	var times = document.getElementById('times');
+	var close  = document.querySelector('#times #closed');//关闭按钮
+	as[3].onclick = function(){
+		date.style.display = 'none';
+		MT(times,{
+				'opacity': {
+					target: 70,
+					duration: 1000,
+					fx: 'bounceOut'
+				},
+				'height':{
+					target:420,
+					duration: 500,
+					fx: 'linear'
+				}
+		});
+		times.style.display = 'block';
+	}
+	close.onclick = function(){
+		
+		MT(times,{
+				'opacity': {
+					target: 0,
+					duration: 1000,
+					fx: 'bounceOut'
+				},
+				'height':{
+					target:0,
+					duration: 500,
+					fx: 'linear'
+				}
+		});
+		setTimeout(function(){
+			date.style.display = 'block';
+		},1000);
+	}
+	
+	dows(date_time);
+	var land_top = document.getElementById('change_pw');
+	var off1 = land_top.getElementsByTagName('span')[0];//关闭按钮
+	off1.onclick = function(){
+		change_pw.style.display = 'none'
 	}
 /*  -------------- 左侧导航模拟--   -------------------------*/
 	var Menu = document.getElementById('Menu_a');
 	var Menu_img = Menu.getElementsByTagName('img');
 	Menu.onmouseover = function(){
-		document.onmouseover = function(ev){
+		document.onmousemove = function(ev){
 			var ev = ev||event;
 			for(var i=0;i<Menu_img.length;i++){
 				var x = Menu_img[0].offsetLeft+Menu_img[0].offsetWidth/2;
@@ -394,6 +511,7 @@ window.onload = function(){
 				Menu_img[i].style.width = scale*70+'px';
 				Menu_img[i].style.height = scale*70+'px';
 			}
+			return false;
 		};
 		return false;
 	};
@@ -406,7 +524,7 @@ window.onload = function(){
 	var Tmenu = document.getElementById('Tmenu');//选项卡焦点
 	var Tli = Tmenu.getElementsByTagName('li');//获取焦点下li
 	var wwidth = document.documentElement.clientWidth;
-	var  num = 0;
+	var num = 0;
 
 //切换桌面图标一组ul；
 	for(var i=0;i<Aul.length;i++){
@@ -502,6 +620,12 @@ window.onload = function(){
 		function Adrag(){
 			for(var i=0;i<lis.length;i++){
 				lis[i].index = i;
+				lis[i].onmouseover = function(){
+					this.style.background = 'rgba(59, 24, 63, 0.3)';
+				}
+				lis[i].onmouseout = function(){
+					this.style.background = '';
+				}
 				lis[i].onmousedown = function(ev){
 					ev = ev||event;
 					popOnff = true; //按下时可以触发弹出窗口事件
@@ -532,9 +656,11 @@ window.onload = function(){
 						self.style.left = x +'px';
 						self.style.top = y +'px';
 						self.style.zIndex = 1;
+						return false;
 					};
 					document.onmouseup = function(){
-						document.onmouseup = document.onmousemove = null;
+						document.onmouseup = null;
+						document.onmousemove = null;
 						var nearli = near(self);
 //						alert(nearli)
 						var Index //用于交换索引的位置
@@ -589,7 +715,8 @@ window.onload = function(){
 								}
 						
 						}
-						document.onmouseup = document.onmousemove = null;
+						document.onmouseup = null;
+						document.onmousemove = null;
 						self.style.zIndex = 0;
 					};
 					return false;
@@ -614,13 +741,13 @@ window.onload = function(){
 			}else{
 				return false;
 			}
-		}
+		};
 		//求直角三角形的斜边；
 		function jl(obj1,obj2){
 			var a = obj1.offsetLeft - obj2.offsetLeft;
 			var b = obj1.offsetTop - obj2.offsetTop;
 			return Math.sqrt(a*a + b*b);
-		}
+		};
 		//检测碰撞
 		function pz(obj1,obj2){
 			var L1 = obj1.offsetLeft;
@@ -662,17 +789,17 @@ window.onload = function(){
 		var url;
 		if (isLeft) {
 			url = [
-				['https://web.qq.com/module/appmarket/appmarket.html', 'https://www.weiyun.com/index.html', 'https://mail.qq.com/cgi-bin/login', 'https://www.qq.com/', 'https://mail.qq.com/cgi-bin/loginpage', 'httpss://dev.t.qq.com/']
+				['http://web.qq.com/module/appmarket/appmarket.html', 'http://www.weiyun.com/index.html', 'http://mail.qq.com/cgi-bin/login', 'http://www.qq.com/', 'https://mail.qq.com/cgi-bin/loginpage', 'http://dev.t.qq.com/']
 			];
 		} else {
 			var inp = obj.getElementsByTagName('input'); //获取li下面的input标签
 
 		 url = [
-				['https://pan.baidu.com/', 'https://map.qq.com/', 'https://www.kuaipan.cn/', 'https://qqreader.qq.com/', 'https://reader.qq.com/cgi-bin/loginpage', 'https://zhrq1008.github.io/Web.qq/jianjie/'],
-				['https://douban.fm/partner/qq_plus', 'https://webqq.qidian.com', 'https://www.kuaidi100.com/ad/head_ad.html', 'https://www.dooland.com/', 'https://www.le.com/', 'https://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
-				['https://qqreader.qq.com/', 'https://v.qq.com/', 'https://www.le.com/'],
-				['https://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'https://www.3366.com/', 'https://web.3366.com/ddz/'],
-				['https://baobei.qq.com/', 'https://www.zhenai.com/901004_924817.html?planid=7620358&groupid=133239289&ctvid=6239592922&kwid=19421816347&domain=&keyword=开心交友网&kwmatch=e&plan=enc_0e0c1d3dbbdbf57a0dfd8bf59335&group=enc_d656f58fdc1d3dbbdb8776&network=1', '']
+				['http://pan.baidu.com/', 'http://map.qq.com/', 'http://www.kuaipan.cn/', 'http://qqreader.qq.com/', 'http://reader.qq.com/cgi-bin/loginpage', 'jianjie/index.html'],
+				['http://douban.fm/partner/qq_plus', 'http://webqq.qidian.com', 'http://www.kuaidi100.com/ad/head_ad.html', 'http://www.dooland.com/', 'http://www.le.com/', 'http://www.mangocity.com/?utm_source=bdppzq&utm_medium=cpc=0020005'],
+				['http://qqreader.qq.com/', 'http://v.qq.com/', 'http://www.le.com/'],
+				['http://www.pengyou.com/?http%3A%2F%2Fhome.pengyou.com%2Findex.php%3Fmod%3Dhome', 'http://www.3366.com/', 'http://web.3366.com/ddz/'],
+				['http://baobei.qq.com/', 'http://www.zhenai.com/901004_924817.html?planid=7620358&groupid=133239289&ctvid=6239592922&kwid=19421816347&domain=&keyword=开心交友网&kwmatch=e&plan=enc_0e0c1d3dbbdbf57a0dfd8bf59335&group=enc_d656f58fdc1d3dbbdb8776&network=1', '']
 			]
 		}
 		var lis = obj.getElementsByTagName('li');
@@ -683,8 +810,7 @@ window.onload = function(){
 					win_open();
 					if(isLeft){
 						popUp(this,url[Uindex][this.index], isLeft); //弹窗
-					} else {
-	//						console.log(this, this.index, inp[this.index], url[Uindex][this.index])
+					} else {				
 							popUp(this,url[Uindex][this.index]); //弹窗
 					}
 				}
@@ -692,8 +818,7 @@ window.onload = function(){
 			};
 		}
 	}
-	
-	
+
 	var right_dbl = document.getElementById('right_dbl');//系统右键
 	var pli = right_dbl.getElementsByTagName('li');
 /*---------------------文件右键操作----------------------------*/
@@ -800,32 +925,32 @@ window.onload = function(){
 				//最小化按钮
 				ctrl_btn[0].onclick = function() {
 					MT(win_mask, {
-						'height': {
-							target: 0,
-							duration: 500,
-							fx: 'linear'
-						},
-						'top': {
-							target: 500,
-							duration: 500,
-							fx: 'linear'
-						},
-						'opacity': {
-							target: 0,
-							duration: 500,
-							fx: 'linear'
-						}
-					}, function() {
+							'height': {
+								target: 0,
+								duration: 500,
+								fx: 'linear'
+							},
+							'top': {
+								target: 500,
+								duration: 500,
+								fx: 'linear'
+							},
+							'opacity': {
+								target: 0,
+								duration: 500,
+								fx: 'linear'
+							}
+						}, function() {
 						win_mask.className = 'hidden'; //隐藏弹出窗口
 						ctrl_btn[1].className = 'magnify'; //显示默认最大化按钮样式
-						if (ctrl_btn[1].onOff) { //如果中间按钮的状态为true，那么就恢复left值设置为0
-							win_mask.style.left = 0 + 'px'; //恢复默认left值
-
-						} else {
-							win_mask.style.left = json.L + 'px'; //恢复默认left值
-
-						}
-					});
+								if (ctrl_btn[1].onOff) { //如果中间按钮的状态为true，那么就恢复left值设置为0
+									win_mask.style.left = 0 + 'px'; //恢复默认left值
+		
+								} else {
+									win_mask.style.left = json.L + 'px'; //恢复默认left值
+		
+								}
+						});
 
 //					setTimeout(function() { //延迟显示折叠任务菜单
 //						fold_menu(valT, _this); //折叠任务菜单	
@@ -934,7 +1059,7 @@ window.onload = function(){
 	var right_dbl = document.getElementById('right_dbl');//系统右键
 	var pli = right_dbl.getElementsByTagName('li');
 	
-	var changeimg = right_dbl.children[5];//右键切换背景图
+	var changeimg = right_dbl.children[4];//右键切换背景图
 	changeimg.onclick = function(){
 		skin.style.display = 'block';
 	};
@@ -942,6 +1067,7 @@ window.onload = function(){
 	document.onclick = function(){
 		right_dbl.style.display = 'none';//系统右键
 		open_right.style.display = 'none';//文件右键
+		return false;//阻止默认行为
 	};
 	document.oncontextmenu = function(ev){
 		ev = ev||event;
@@ -1087,7 +1213,7 @@ window.onload = function(){
 		}
 	};
 	/*--------右键新建功能-------------------*/
-	var creat_li = right_dbl.children[4];//新建按钮
+	var creat_li = right_dbl.children[3];//新建按钮
 	creat_li.onclick = function(){
 		createLi(true,num); //右键创建文件夹
 	};
@@ -1119,104 +1245,113 @@ window.onload = function(){
 		}
 		
 	}
-	/*---------------------时钟---------------------------*/
-//		var bg = document.getElementById('bg')
-//		
-//		var wrap = document.getElementById('wrap');
-//		var lists = document.getElementById('lists');
-//		var h = document.getElementById('hour');
-//		var minu = document.getElementById('min');
-//		var sec = document.getElementById('sec');
-//		var str = "";
-//		for(var i = 0;i<60;i++){
-//			str += '<li style= transform:rotate('+i*6+'deg)><span></span></li>';
-//		}
-//		lists.innerHTML = str;
-//		var spans = document.getElementsByTagName('span');
-//		console.log(spans.length)
-//		for(var i = 0;i<60;i++){
-//			if(i%5 == 0){
-//				//console.log(lis[i])
-//				spans[i].innerHTML = i/5;
-//			}
-//		}
-//		time();
-//		setInterval(function(){
-//			time();
-//		},1000)
-//		function time(){
-//			//获取本机时间
-//			var date = new Date();
-//			//获取秒数
-//			var second = date.getSeconds();
-//			//获取分钟
-//			var min = date.getMinutes()+second/60;
-//			//获取小时
-//			var hour =date.getHours()+min/60;
-//			//秒数的针数
-//			sec.style.transform = 'rotate('+second*6+'deg)';
-//			//分钟的针数
-//			minu.style.transform = 'rotate('+min*6+'deg)';
-//			//小时的时针
-//			h.style.transform = 'rotate('+hour*30+'deg)';
-//		}
-//
-//	
-//	dows(bg);
-
-	
-	function dows(obj){
-	obj.onmousedown=function(ev){
-		var ev=ev||event;
-		var iLeft=ev.clientX-obj.offsetLeft;
-		var iTop=ev.clientY-obj.offsetTop;
-		document.onmousemove=function(ev){
-			var ev=ev||event;
-			var L=ev.clientX-iLeft;
-			var T=ev.clientY-iTop;
-			var maxl = document.documentElement.clientWidth-obj.offsetWidth;
-			var maxt = document.documentElement.clientHeight-obj.offsetHeight;
-			if(T<0)
-			{
-				T=0;
-			}
-			if(T>maxt)
-			{
-				T = maxt;
-			}
-			if(L<0)
-			{
-				L=0;
-			}
-			if(L>maxl)
-			{
-				L=maxl;
-			}
-			obj.style.left=L+'px';
-			obj.style.top=T+'px';
-			}
-			document.onmouseup=function(){
-				document.onmousemove=null;
-				document.onmouseup=null;
-			}
-	
-			return false;
-		}
-	}
 	//绑定事件函数封装
-	function bin(obj,eventType,fn){
+	function bin(obj,eventType,fn1){
 		if(obj.addEventListener){
 			obj.addEventListener(eventType,function(){
-				fn.call(this);
+				fn1.call(this);
 			},false)
 		}else{
 			obj.attachEvent('on'+eventType,function(){
-				fn.call(this);
+				fn1.call(this);
 			})
 		}
 	}
-	/*-------------------------------------*/
+	/*---------------------时钟---------------------------*/
 	
+	var date= document.getElementsByClassName("date")[0];
+			function init(){
+				var d = new Date;
+				var hours = d.getHours();
+				var min = d.getMinutes();
+				var sec = d.getSeconds();
+				var h = document.getElementsByClassName("hours")[0];
+				var m = document.getElementsByClassName("min")[0];
+				var s = document.getElementsByClassName("sec")[0];
+				h.style.transform = "rotate(" + (hours % 12 * 30 + min * 0.5) + "deg)";
+				
+				m.style.transform = "rotate(" + min * 6 + "deg)";
+				
+				s.style.transform = "rotate(" + sec * 6 + "deg)";
+				
+			}
+			init();
+			
+			var timer = setInterval(function(){
+				init();
+			} , 1000)
+			
+			var box = document.getElementsByClassName("date")[0];
+			var width = box.offsetWidth;
+			var height = box.offsetHeight;
+			var left = width / 2;
+			var otop = height / 2;
+			for(var i = 0; i < 12; i++){
+				var span = document.createElement("span");
+				if(i == 0){
+					span.innerHTML = 12;
+				}else{
+					span.innerHTML = i;
+				}
+				var l = Math.sin(i * 30 * Math.PI / 180) * (width - 60) / 2 - 15;
+				var t = -Math.cos(i * 30 * Math.PI / 180) * (width - 60) / 2 - 15;
+				
+				span.style.left = left + l + "px";
+				span.style.top = otop + t + "px";
+				box.appendChild(span);
+			}
+			
+			for(var i = 0; i < 60; i ++){
+				var I = document.createElement("i");
+				var l = Math.sin(i * 6 * Math.PI / 180) * (width - 10) / 2 - 6;
+				var t = -Math.cos(i * 6 * Math.PI / 180) * (width - 10) / 2 - 6;
+				if(i%5 == 0){
+					I.style.height = "12px";
+				}
+				I.style.left = left + l + "px";
+				I.style.top = otop + t + "px";
+				I.style.transform = "rotate(" + (i * 6) + "deg)";
+				box.appendChild(I);
+			}
+			dows(date);
+			function dows(obj){
+			obj.onmousedown=function(ev){
+				var ev=ev||event;
+				var iLeft=ev.clientX-obj.offsetLeft;
+				var iTop=ev.clientY-obj.offsetTop;
+				document.onmousemove=function(ev){
+					var ev=ev||event;
+					var L=ev.clientX-iLeft;
+					var T=ev.clientY-iTop;
+					var maxl = document.documentElement.clientWidth-obj.offsetWidth;
+					var maxt = document.documentElement.clientHeight-obj.offsetHeight;
+					if(T<0)
+					{
+						T=0;
+					}
+					if(T>maxt)
+					{
+						T = maxt;
+					}
+					if(L<0)
+					{
+						L=0;
+					}
+					if(L>maxl)
+					{
+						L=maxl;
+					}
+					obj.style.left=L+'px';
+					obj.style.top=T+'px';
+					}
+
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						document.onmouseup=null;
+					}
+					return false;
+				}
+			}
 	
 	
 }
