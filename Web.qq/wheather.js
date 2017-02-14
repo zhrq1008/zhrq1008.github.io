@@ -6,6 +6,18 @@
 	var w_close = document.querySelector('#wheather #land_top span');
 	var w_move = document.querySelector('#wheather #land_top');
 	var w_a = document.querySelectorAll('#topNav a')[4];
+	
+	function fn(data){
+			wt_li[0].innerHTML = '城市：'+data.data.city;
+			wt_li[1].innerHTML = '风力：'+data.data.forecast[0].fengli;
+			wt_li[2].innerHTML = '风向：'+data.data.forecast[0].fengxiang;
+			wt_li[3].innerHTML = '最高温度：'+data.data.forecast[0].high;
+			wt_li[4].innerHTML = '最低温度：'+data.data.forecast[0].low;
+			wt_li[5].innerHTML = '类型：'+data.data.forecast[0].type;
+
+	}
+	
+	
 	w_move.onmousedown = function(ev) {
 //		alert(1)
 		drag(ev,wheather);
@@ -93,12 +105,4 @@
 		script.src = 'http://wthrcdn.etouch.cn/weather_mini?city='+seach_v+'&callback=fn';
 		document.body.appendChild(script);
 	}
-	function fn(data){
-			wt_li[0].innerHTML = '城市：'+data.data.city;
-			wt_li[1].innerHTML = '风力：'+data.data.forecast[0].fengli;
-			wt_li[2].innerHTML = '风向：'+data.data.forecast[0].fengxiang;
-			wt_li[3].innerHTML = '最高温度：'+data.data.forecast[0].high;
-			wt_li[4].innerHTML = '最低温度：'+data.data.forecast[0].low;
-			wt_li[5].innerHTML = '类型：'+data.data.forecast[0].type;
-
-	}
+	
